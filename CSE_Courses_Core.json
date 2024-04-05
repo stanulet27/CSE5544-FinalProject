@@ -1,0 +1,247 @@
+[{
+    "Number":"2221",
+    "Area" : "CSE",
+    "Title":"Software I: Software Components",
+    "Units":"4",
+    "Prereq":"Prereq: 1212, 1221, 1222, 1223, 1224, Engr 1221, 1281.01H, 1281.02H, or CSE Placement Level A. Prereq or concur: Math 1151, 1161.01, or 1161.02.",
+    "Type":"CORE"
+},{
+    "Number":"2231",
+    "Area" : "CSE",
+    "Title":"Software II: Software Development and Design",
+    "Units":"4",
+    "Prereq":"Prereq: 2221. Concur: 2321.",
+    "Type":"CORE"
+},{
+    "Number":"2321",
+    "Area" : "CSE",
+    "Title":"Foundations I: Discrete Structures",
+    "Units":"3",
+    "Prereq":"Prereq: 2122, 2123, or 2221; and Math 1151, or 1161. Concur (for students with credit for 2221): 2231.",
+    "Type":"CORE"
+},{
+    "Number":"2331",
+    "Area" : "CSE",
+    "Title":"Foundations II: Data Structures and Algorithms",
+    "Units":"3",
+    "Prereq":"Prereq: 2231, 2321, and Stat 3460 or 3470, and enrollment in CSE, CIS, ECE, Data Analytics, Math majors or CIS minor. Concur: Math 3345.",
+    "Type":"CORE"
+},{
+    "Number":"2421",
+    "Area" : "CSE",
+    "Title":"Systems I: Introduction to Low-Level Programming and Computer Organization",
+    "Units":"4",
+    "Prereq":"Prereq: 2122, 2123, or 2231; and 2321 or Math 2566; and enrollment in CSE, CIS, Data Analytics, Music (BS), Eng Physics, or Math major.",
+    "Type":"N/A"
+},{
+    "Number":"2431",
+    "Area" : "CSE",
+    "Title":"Systems II: Introduction to Operating Systems",
+    "Units":"3",
+    "Prereq":"Prereq: 2421, or 2451 and ECE 2560; and enrollment in CSE, CIS, Data Analytics, Engr Physics, or ECE major.",
+    "Type":"N/A"
+},{
+    "Number":"3341",
+    "Area" : "CSE",
+    "Title":"Principles of Programming Languages",
+    "Units":"3",
+    "Prereq":"Prereq: 2231, 2331 (680), and 2421, and 3901 (560), 3902, or 3903.",
+    "Type":"N/A"
+},{
+    "Number":"2501",
+    "Area" : "CSE",
+    "Title":"Social, Ethical, and Professional Issues in Computing",
+    "Units":"1",
+    "Prereq":"Prereq: 2122, 2123, or 2231; and Gen Ed Writing: Level 2; and enrollment in CSE or CIS major, or Information Security minor.",
+    "Type":"N/A"
+},{
+    "Number":"2338",
+    "Area" : "PHILOS",
+    "Title":"",
+    "Units":"",
+    "Prereq":"",
+    "Type":"N/A"
+},{
+    "Number":"3901",
+    "Area" : "CSE",
+    "Title":"Project: Design, Development, and Documentation of Web Applications",
+    "Units":"4",
+    "Prereq":"Prereq: 2231; and 2321; and 2421 or 3430, or 2451 and ECE 2560; and enrollment in CSE, CIS, ECE, or Data Analytics major.",
+    "Type":"N/A"
+},{
+    "Number":"3902",
+    "Area" : "CSE",
+    "Title":"Project: Design, Development, and Documentation of Interactive Systems",
+    "Units":"4",
+    "Prereq":"Prereq: 2231; and 2321; and 2421 or 3430, or 2451 and ECE 2560; and enrollment in CSE, CIS, ECE, Music (BS), or Data Analytics major.",
+    "Type":"N/A"
+},{
+    "Number":"3903",
+    "Area" : "CSE",
+    "Title":"Project: Design, Development, and Documentation of System Software",
+    "Units":"4",
+    "Prereq":"Prereq: 2231; and 2321; and 2421 or 3430, or 2451 and ECE 2560; and enrollment in CSE, CIS, ECE, or Data Analytics major.",
+    "Type":"N/A"
+},{
+    "Number":"3231",
+    "Area" : "CSE",
+    "Title":"Software Engineering Techniques",
+    "Units":"3",
+    "Prereq":"Prereq: 3901 or 3902 or 3903.",
+    "Type":"N/A"
+},{
+    "Number":"3241",
+    "Area" : "CSE",
+    "Title":"Introduction to Database Systems",
+    "Units":"3",
+    "Prereq":"Prereq: 2123 or 2231; and 2321, or 2111 and Math 2366; and enrollment in CSE, CIS, ISE, Data Analytics, ECE, Engr Physics, or Business Info Sys majors, or CIS minor.",
+    "Type":"N/A"
+},{
+    "Number":"3421",
+    "Area" : "CSE",
+    "Title":"Introduction to Computer Architecture",
+    "Units":"3",
+    "Prereq":"Prereq: 2231, and 2421 or ECE 2560, and 2000 or 2060; and enrollment in CSE, CIS, or ECE majors.",
+    "Type":"N/A"
+},{
+    "Number":"3461",
+    "Area" : "CSE",
+    "Title":"Computer Networking and Internet Technologies",
+    "Units":"3",
+    "Prereq":"Prereq: 2421; or 3430; or 2451 and ECE 2560; and enrollment in CIS, CSE, ECE, Engr Physics, or Data Analytics major. Prereq or concur: 2431 or 3430.",
+    "Type":"N/A"
+},{
+    "Number":"3521",
+    "Area" : "CSE",
+    "Title":"Survey of Artificial Intelligence I: Basic Techniques",
+    "Units":"3",
+    "Prereq":"Prereq: 2331 or 5331; and Math 2174 or 2568 or 4568 or 5520H; and Stat 3201 or 3450 or 3460 or 3470 or 4201 or Math 4530 or 5530H; and enrollment in CSE, CIS, ECE or Data Analytics major.",
+    "Type":"N/A"
+},{
+    "Number":"3541",
+    "Area" : "CSE",
+    "Title":"Computer Game and Animation Techniques",
+    "Units":"3",
+    "Prereq":"Prereq: 3901, 3902, or 3903; and enrollment in CSE, CIS, Music (BS), or ECE major.",
+    "Type":"N/A"
+},{
+    "Number":"5911",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Software Applications",
+    "Units":"4",
+    "Prereq":"Prereq: 3231 or 5231, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing.",
+    "Type":"CAPSTONE"
+},{
+    "Number":"5912",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Game Design and Development",
+    "Units":"4",
+    "Prereq":"Prereq: 3541 or 5541, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and 2nd writing course; or Grad standing.",
+    "Type":"CAPSTONE"
+},{
+    "Number":"5913",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Computer Animation",
+    "Units":"4",
+    "Prereq":"Prereq: 3541 or 5541, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing.",
+    "Type":"CAPSTONE"
+},{
+    "Number":"5914",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Knowledge-Based Systems",
+    "Units":"4",
+    "Prereq":"Prereq: 3521 or 5521, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing.",
+    "Type":"CAPSTONE"
+},{
+    "Number":"5915",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Information Systems",
+    "Units":"4",
+    "Prereq":"Prereq: 3241 or 5241, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing.",
+    "Type":"CAPSTONE"
+},{
+    "Number":"5916",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Research-Focused Projects",
+    "Units":"4",
+    "Prereq":"Prereq: 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing.",
+    "Type":"CAPSTONE"
+},{
+    "Number":"2020",
+    "Area" : "ECE",
+    "Title":"Introduction to Analog Systems and Circuits",
+    "Units":"3",
+    "Prereq":"Prereq: Math 1152, 1161.01, 1161.02, 1172, or 1181H; and Physics 1250, 1250H, or 1260, or CHEM 1210 or 1250.",
+    "Type":"N/A"
+},{
+    "Number":"2060",
+    "Area" : "ECE",
+    "Title":"Introduction to Digital Logic",
+    "Units":"3",
+    "Prereq":"N/A",
+    "Type":"N/A"
+},{
+    "Number":"2568",
+    "Area" : "MATH",
+    "Title":"",
+    "Units":"",
+    "Prereq":"",
+    "Type":"N/A"
+},{
+    "Number":"3345",
+    "Area" : "MATH",
+    "Title":"",
+    "Units":"",
+    "Prereq":"",
+    "Type":"N/A"
+},{
+    "Number":"3470",
+    "Area" : "STAT",
+    "Title":"",
+    "Units":"",
+    "Prereq":"",
+    "Type":"N/A"
+},{
+    "Number":"1151",
+    "Area" : "",
+    "Title":"",
+    "Units":"",
+    "Prereq":"",
+    "Type":"N/A"
+},{
+    "Number":"1172",
+    "Area" : "",
+    "Title":"",
+    "Units":"",
+    "Prereq":"",
+    "Type":"N/A"
+},{
+    "Number":"1250",
+    "Area" : "",
+    "Title":"",
+    "Units":"",
+    "Prereq":"",
+    "Type":"N/A"
+},{
+    "Number":"1181",
+    "Area" : "",
+    "Title":"",
+    "Units":"",
+    "Prereq":"",
+    "Type":"N/A"
+},{
+    "Number":"1182",
+    "Area" : "",
+    "Title":"",
+    "Units":"",
+    "Prereq":"",
+    "Type":"N/A"
+},{
+    "Number":"1100",
+    "Area" : "",
+    "Title":"",
+    "Units":"",
+    "Prereq":"",
+    "Type":"N/A"
+}
+]
