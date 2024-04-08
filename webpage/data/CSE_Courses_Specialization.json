@@ -1,8 +1,7 @@
 [{
     "Number":"3521",
-    "Area" : "CSE",
     "Title":"Survey of Artificial Intelligence I: Basic Techniques",
-    "Units":"3",
+    "Units":"3.0",
     "Prereq":"2331;2568;3470",
     "Type":"AIT"
 },{
@@ -34,12 +33,6 @@
     "Title":"Introduction to Data Mining",
     "Units":"3.0",
     "Prereq":"3241;2331",
-    "Type":"AIT"
-},{
-    "Number":"5914",
-    "Title":"Capstone Design: Knowledge-Based Systems",
-    "Units":"4.0",
-    "Prereq":"3521;2501,1338;3901,3902,3903;2nd Writing",
     "Type":"AIT"
 },{
     "Number":"5914",
