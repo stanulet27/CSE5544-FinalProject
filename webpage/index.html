@@ -100,7 +100,7 @@
                         // Setting the specialization nodes
                         selectedSpecializationCourses.forEach(course => 
                         {
-                            g.setNode(course.Number,{label : course.Number + ": " + course.Title, style: 'fill: green'});
+                            g.setNode(course.Number,{label : course.Number + ":" + course.Title, style: 'fill: green; text-align: center'});
 
                         })
 
@@ -135,7 +135,7 @@
                                 }
                                 else // There are no OR Preqrequisites, append nodes as they are and define edges
                                 {
-                                    g.setNode(andPrereq,{lable : andPrereq, style: 'fill: blue'});
+                                    //g.setNode(andPrereq,{lable : andPrereq, style: 'fill: blue'});
                                     //g.setEdge(andPrereq,course.Number);
                                 }
 
