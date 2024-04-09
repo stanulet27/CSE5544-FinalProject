@@ -45,6 +45,23 @@
             //Main app definition
             var app = async function () 
             {
+                // ~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~
+
+                function nodeExists(courseArray,courseNumber)
+                {
+                    var exists = false;
+                    courseArray.forEach( (course,i) => 
+                    {                        
+                        if(course.Number === courseNumber)
+                        {
+                            exists = true;
+                        }
+                    })
+                    return exists;
+                }
+
+                // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
                 //Load Json files
                 var specializaitonsData = await d3.json("data/CSE_Courses_Specialization.json");
                 //console.log(specializaitonData);
@@ -74,20 +91,58 @@
                             }  
                         });
 
-                        console.log(selectedSpecializationCourses);
-
                         // ---------------------------------------------- DAG Creation --------------------------------------------------
-                        var g = new dagreD3.graphlib.Graph({compound:true})
-                                                    .setGraph({})
+                        var g = new dagreD3.graphlib.Graph({directed:true})
+                                                    .setGraph({rankdir:"lr"})
                                                     .setDefaultEdgeLabel(function() { return {}; });
-
-                        // Setting the nodes
+                        
+                        // Setting the specialization nodes
                         selectedSpecializationCourses.forEach(course => 
                         {
-                            g.setNode(course.Number,{label : course.Number, description : course.Title});
+                            g.setNode(course.Number,{label : course.Number + ": " + course.Title, style: 'fill: green'});
 
                         })
 
+                        // Setting the prereq nodes
+                        selectedSpecializationCourses.forEach(course => 
+                        {
+                            //Get AND Prereqs
+                            andPrereqs = course.Prereq.split(";");
+                            //console.log(andPrereqs);
+
+                            andPrereqs.forEach(andPrereq => {
+                                
+                                if(andPrereq.includes(",")) // There are OR Prereqs that need to be checked
+                                {
+                                    // orPrereqs = andPrereq.split(",");
+
+                                    // //Set Containment Node
+                                    // g.setNode(andPrereq ,{label : "OR", clusterLabelPos: 'top' ,style: 'fill: gray'}); 
+                                    // g.setEdge(andPrereq,course.Number);
+
+                                    // orPrereqs.forEach(orPrereq => {
+
+                                    //     //Add individual nodes, then add them to the containment                                        
+                                    //     g.setNode(orPrereq,{label : orPrereq, style: 'fill: blue;width:50px'});
+                                    //     //g.setParent(orPrereq,andPrereq);
+                                    //     g.setEdge(orPrereq,andPrereq);
+
+                                    // })
+
+                                    // //g.setEdge(andPrereq,course.Number);
+
+                                }
+                                else // There are no OR Preqrequisites, append nodes as they are and define edges
+                                {
+                                    g.setNode(andPrereq,{lable : andPrereq, style: 'fill: blue'});
+                                    //g.setEdge(andPrereq,course.Number);
+                                }
+
+                            })
+
+                        })
+
+                        //Graphic adjustment of nodes
                         g.nodes().forEach(function(v) 
                         {
                             var node = g.node(v);
@@ -101,22 +156,14 @@
                         // Set up an SVG group so that we can translate the final graph.
                         svgGroup = svgCourseGraph.append("g");
 
-
                         // Run the renderer. This is what draws the final graph.
                         render(svgCourseGraph.select("g"), g);
 
-
-                        // svgHeight = document.getElementById("course-graph").clientHeight;
-                        // svgWidth = document.getElementById("course-graph").clientWidth;
-                        // svgGroup.attr("transform","translate("+ svgWidth/2 + "," + svgHeight/2 + ")");
-
-
-
+                        // Center the graph
+                        var xCenterOffset = (window.innerWidth - g.graph().width) / 2;
+                        svgCourseGraph.select("g").attr("transform", "translate(" + xCenterOffset + ", 20)");
+                        svgCourseGraph.attr("height", g.graph().height + 40);
                         // ---------------------------------------------------------------------------------------------------------------
-
-                        
-            
-
                     }
                 })
                 
