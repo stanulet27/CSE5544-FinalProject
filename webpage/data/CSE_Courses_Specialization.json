@@ -3,247 +3,288 @@
     "Title":"Survey of Artificial Intelligence I: Basic Techniques",
     "Units":"3.0",
     "Prereq":"2331;2568;3470",
-    "Type":"AIT"
+    "Specialization" : "AIT",
+    "Type":"REQUIRED"
 },{
     "Number":"5523",
     "Title":"Machine Learning and Statistical Pattern Recognition",
     "Units":"3.0",
     "Prereq":"3521,5243;3470;2568",
-    "Type":"AIT"
+    "Specialization" : "AIT",
+    "Type":"OPTION"
 },{
     "Number":"5524",
     "Title":"Computer Vision for Human-Computer Interaction",
     "Units":"3.0",
     "Prereq":"2331",
-    "Type":"AIT"
+    "Specialization" : "AIT",
+    "Type":"OPTION"
 },{
     "Number":"5525",
     "Title":"Foundations of Speech and Language Processing",
     "Units":"3.0",
     "Prereq":"3521;3470",
-    "Type":"AIT"
+    "Specialization" : "AIT",
+    "Type":"OPTION"
 },{
     "Number":"5526",
     "Title":"Introduction to Neural Networks",
     "Units":"3.0",
     "Prereq":"3521",
-    "Type":"AIT"
+    "Specialization" : "AIT",
+    "Type":"OPTION"
 },{
     "Number":"5243",
     "Title":"Introduction to Data Mining",
     "Units":"3.0",
     "Prereq":"3241;2331",
-    "Type":"AIT"
+    "Specialization" : "AIT",
+    "Type":"OPTION"
 },{
     "Number":"5914",
     "Title":"Capstone Design: Knowledge-Based Systems",
     "Units":"4.0",
-    "Prereq":"3521;2501,1338;3901,3902,3903;2nd Writing",
-    "Type":"AIT"
+    "Prereq":"3521;2501,1338;3901,3902,3903;2367",
+    "Specialization" : "AIT",
+    "Type":"OPTION"
 },{
     "Number":"3541",
     "Title":"Computer Game and Animation Techniques",
     "Units":"3.0",
     "Prereq":"3901,3902,3903",
-    "Type":"CGG"
+    "Specialization" : "CGG",
+    "Type":"REQUIRED"
 },{
     "Number":"3902",
     "Title":"Project: Design, Development, and Documentation of Interactive Systems",
     "Units":"4.0",
     "Prereq":"2231;2321;2421",
-    "Type":"CGG"
+    "Specialization" : "CGG",
+    "Type":"REQUIRED"
 },{
     "Number":"5542",
     "Title":"Real-Time Rendering",
     "Units":"3.0",
     "Prereq":"3901,3902,3903;2568",
-    "Type":"CGG"
+    "Specialization" : "CGG",
+    "Type":"OPTION"
 },{
     "Number":"5543",
     "Title":"Geometric Modeling",
     "Units":"3.0",
     "Prereq":"2568",
-    "Type":"CGG"
+    "Specialization" : "CGG",
+    "Type":"OPTION"
 },{
     "Number":"5544",
     "Title":"Introduction to Data Visualization",
     "Units":"3.0",
     "Prereq":"3541",
-    "Type":"CGG"
+    "Specialization" : "CGG",
+    "Type":"OPTION"
 },{
     "Number":"5545",
     "Title":"Advanced Computer Graphics",
     "Units":"3.0",
     "Prereq":"3541",
-    "Type":"CGG"
+    "Specialization" : "CGG",
+    "Type":"OPTION"
 },{
     "Number":"5546",
     "Title":"Virtual Reality",
     "Units":"3.0",
     "Prereq":"3541,5542,5544",
-    "Type":"CGG"
+    "Specialization" : "CGG",
+    "Type":"OPTION"
 },{
     "Number":"5912",
     "Title":"Capstone Design: Game Design and Development",
     "Units":"4.0",
-    "Prereq":"3521;2501,1338;3901,3902,3903;2nd Writing",
-    "Type":"CGG"
+    "Prereq":"3521;2501,1338;3901,3902,3903;2367",
+    "Specialization" : "CGG",
+    "Type":"OPTION"
 },{
     "Number":"5913",
     "Title":"Capstone Design: Computer Animation",
     "Units":"4.0",
-    "Prereq":"3521;2501,1338;3901,3902,3903;2nd Writing",
-    "Type":"CGG"
+    "Prereq":"3521;2501,1338;3901,3902,3903;2367",
+    "Specialization" : "CGG",
+    "Type":"OPTION"
 },{
     "Number":"3241",
     "Area" : "CSE",
     "Title":"Introduction to Database Systems",
     "Units":"3",
     "Prereq":"2123,2231;2321",
-    "Type":"DBA"
+    "Specialization" : "DBA",
+    "Type":"REQUIRED"
 },{
     "Number":"5242",
     "Title":"Advanced Database Management Systems",
     "Units":"3.0",
     "Prereq":"3241;2421",
-    "Type":"DBA"
+    "Specialization" : "DBA",
+    "Type":"REQUIRED"
 },{
     "Number":"5243",
     "Title":"Introduction to Data Mining",
     "Units":"3.0",
     "Prereq":"3241;2331",
-    "Type":"DBA"
+    "Specialization" : "DBA",
+    "Type":"OPTION"
 },{
     "Number":"5523",
     "Title":"Machine Learning and Statistical Pattern Recognition",
     "Units":"3.0",
     "Prereq":"3521,5243;3470;2568",
-    "Type":"DBA"
+    "Specialization" : "DBA",
+    "Type":"OPTION"
 },{
     "Number":"3461",
     "Title":"Computer Networking and Internet Technologies",
     "Units":"3.0",
     "Prereq":"2421",
-    "Type":"ICA"
+    "Specialization" : "ICA",
+    "Type":"REQUIRED"
 },{
     "Number":"4471",
     "Title":"Information Security",
     "Units":"3.0",
     "Prereq":"2231;2321",
-    "Type":"ICA"
+    "Specialization" : "ICA",
+    "Type":"REQUIRED"
 },{
     "Number":"5472",
     "Title":"Information Security Projects",
     "Units":"3.0",
     "Prereq":"3901,3902,3903;3461,4471",
-    "Type":"ICA"
+    "Specialization" : "ICA",
+    "Type":"OPTION"
 },{
     "Number":"5473",
     "Title":"Network Security",
     "Units":"3.0",
     "Prereq":"3461",
-    "Type":"ICA"
+    "Specialization" : "ICA",
+    "Type":"OPTION"
 },{
     "Number":"3461",
     "Title":"Computer Networking and Internet Technologies",
     "Units":"3.0",
     "Prereq":"2421,3430,2431",
-    "Type":"CNT"
+    "Specialization" : "CNT",
+    "Type":"REQUIRED"
 },{
     "Number":"5432",
     "Title":"Mobile Handset Systems and Networking",
     "Units":"3.0",
     "Prereq":"2421,3430",
-    "Type":"CNT"
+    "Specialization" : "CNT",
+    "Type":"OPTION"
 },{
     "Number":"5462",
     "Title":"Network Programming",
     "Units":"3.0",
     "Prereq":"3461",
-    "Type":"CNT"
+    "Specialization" : "CNT",
+    "Type":"OPTION"
 },{
     "Number":"5463",
     "Title":"Introduction to Wireless Networking",
     "Units":"3.0",
     "Prereq":"3461",
-    "Type":"CNT"
+    "Specialization" : "CNT",
+    "Type":"OPTION"
 },{
     "Number":"5472",
     "Title":"Information Security Projects",
     "Units":"3.0",
     "Prereq":"3901,3902,3903;3461,4471",
-    "Type":"CNT"
+    "Specialization" : "CNT",
+    "Type":"OPTION"
 },{
     "Number":"5473",
     "Title":"Network Security",
     "Units":"3.0",
     "Prereq":"3461",
-    "Type":"CNT"
+    "Specialization" : "CNT",
+    "Type":"OPTION"
 },{
     "Number":"3421",
     "Title":"Introduction to Computer Architecture",
     "Units":"3.0",
     "Prereq":"2231;2421",
-    "Type":"CSY"
+    "Specialization" : "CSY",
+    "Type":"REQUIRED"
 },{
     "Number":"5433",
     "Title":"Operating Systems Laboratory",
     "Units":"3.0",
     "Prereq":"2431",
-    "Type":"CSY"
+    "Specialization" : "CSY",
+    "Type":"OPTION"
 },{
     "Number":"5441",
     "Title":"Introduction to Parallel Computing",
     "Units":"3.0",
     "Prereq":"2231, 2321;2421,3430",
-    "Type":"CSY"
+    "Specialization" : "CSY",
+    "Type":"OPTION"
 },{
     "Number":"3461",
     "Title":"Computer Networking and Internet Technologies",
     "Units":"3.0",
     "Prereq":"2431,3430",
-    "Type":"CSY"
+    "Specialization" : "CSY",
+    "Type":"OPTION"
 },{
     "Number":"5243",
     "Title":"Introduction to Data Mining",
     "Units":"3.0",
     "Prereq":"3241;2331",
-    "Type":"CSY"
+    "Specialization" : "CSY",
+    "Type":"OPTION"
 },{
     "Number":"3231",
     "Title":"Software Engineering Techniques",
     "Units":"3.0",
     "Prereq":"3901,3902,3903",
-    "Type":"SWS"
+    "Specialization" : "SWS",
+    "Type":"REQUIRED"
 },{
     "Number":"3232",
     "Title":"Software Requirements Analysis",
     "Units":"3.0",
     "Prereq":"3241,3901,3902,3903",
-    "Type":"SWS"
+    "Specialization" : "SWS",
+    "Type":"REQUIRED"
 },{
     "Number":"3321",
     "Title":"Automata and Formal Languages",
     "Units":"3.0",
     "Prereq":"2231,2421,2331;3345",
-    "Type":"SWS"
+    "Specialization" : "SWS",
+    "Type":"OPTION"
 },{
     "Number":"5234",
     "Title":"Distributed Enterprise Computing",
     "Units":"3.0",
     "Prereq":"2431",
-    "Type":"SWS"
+    "Specialization" : "SWS",
+    "Type":"OPTION"
 },{
     "Number":"5235",
     "Title":"Applied Enterprise Architectures and Services",
     "Units":"3.0",
     "Prereq":"5911,5912,5913,5914,5915",
-    "Type":"SWS"
+    "Specialization" : "SWS",
+    "Type":"OPTION"
 },{
     "Number":"5236",
     "Title":"Mobile Application Development",
     "Units":"3.0",
     "Prereq":"3901,3902,3903",
-    "Type":"SWS"
+    "Specialization" : "SWS",
+    "Type":"OPTION"
 }
 ]
