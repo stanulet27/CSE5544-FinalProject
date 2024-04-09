@@ -3,8 +3,8 @@
     "Area" : "CSE",
     "Title":"Software I: Software Components",
     "Units":"4",
-    "Prereq":"1212, 1221, 1222, 1223, 1224, Engr 1221, 1281.01H, 1281.02H.",
-    "Concur":"Math 1151,1161.01,1161.02.",
+    "Prereq":"1223",
+    "Concur":"1151",
     "Type":"CORE"
 },{
     "Number":"2231",
@@ -19,7 +19,7 @@
     "Area" : "CSE",
     "Title":"Foundations I: Discrete Structures",
     "Units":"3",
-    "Prereq":"2122,2123,2221;Math 1151,1161",
+    "Prereq":"2221;1151",
     "Concur":"2231",  
     "Type":"CORE"
 },{
@@ -27,7 +27,7 @@
     "Area" : "CSE",
     "Title":"Foundations II: Data Structures and Algorithms",
     "Units":"3",
-    "Prereq":"2231, 2321;STAT3460,STAT3470",
+    "Prereq":"2321;3470",
     "Concur":"Math 3345",
     "Type":"CORE"
 },{
@@ -35,203 +35,196 @@
     "Area" : "CSE",
     "Title":"Systems I: Introduction to Low-Level Programming and Computer Organization",
     "Units":"4",
-    "Prereq":"2122,2123,2231;2321,Math 2566",
+    "Prereq":"2231;2321",
     "Type":"N/A"
 },{
     "Number":"2431",
     "Area" : "CSE",
     "Title":"Systems II: Introduction to Operating Systems",
     "Units":"3",
-    "Prereq":"2421,2451;ECE 2560",
+    "Prereq":"2421",
     "Type":"N/A"
 },{
     "Number":"3341",
     "Area" : "CSE",
     "Title":"Principles of Programming Languages",
     "Units":"3",
-    "Prereq":"2231, 2331 (680);2421; 3901 (560), 3902, 3903.",
+    "Prereq":"2231;2331;3901,3902,3903",
     "Type":"N/A"
 },{
     "Number":"2501",
     "Area" : "CSE",
     "Title":"Social, Ethical, and Professional Issues in Computing",
     "Units":"1",
-    "Prereq":"2122, 2123, or 2231; and Gen Ed Writing: Level 2",
-    "Type":"N/A"
-},{
-    "Number":"2338",
-    "Area" : "PHILOS",
-    "Title":"",
-    "Units":"",
-    "Prereq":"",
+    "Prereq":"2231;2367",
     "Type":"N/A"
 },{
     "Number":"3901",
     "Area" : "CSE",
     "Title":"Project: Design, Development, and Documentation of Web Applications",
     "Units":"4",
-    "Prereq":"2231;2321;2421,3430, or 2451 and ECE 2560",
+    "Prereq":"2231;2321;2421",
     "Type":"N/A"
 },{
     "Number":"3902",
     "Area" : "CSE",
     "Title":"Project: Design, Development, and Documentation of Interactive Systems",
     "Units":"4",
-    "Prereq":"2231; and 2321; and 2421 or 3430, or 2451 and ECE 2560",
+    "Prereq":"2231;2321;2421",
     "Type":"N/A"
 },{
     "Number":"3903",
     "Area" : "CSE",
     "Title":"Project: Design, Development, and Documentation of System Software",
     "Units":"4",
-    "Prereq":"2231; and 2321; and 2421 or 3430, or 2451 and ECE 2560",
+    "Prereq":"2231;2321;2421",
     "Type":"N/A"
 },{
     "Number":"3231",
     "Area" : "CSE",
     "Title":"Software Engineering Techniques",
     "Units":"3",
-    "Prereq":"3901,3902,3903.",
+    "Prereq":"3901,3902,3903",
     "Type":"N/A"
 },{
     "Number":"3241",
     "Area" : "CSE",
     "Title":"Introduction to Database Systems",
     "Units":"3",
-    "Prereq":"2123 or 2231; and 2321, or 2111 and Math 2366",
+    "Prereq":"2231;2321",
     "Type":"N/A"
 },{
     "Number":"3421",
     "Area" : "CSE",
     "Title":"Introduction to Computer Architecture",
     "Units":"3",
-    "Prereq":" 2231, and 2421 or ECE 2560, and 2000 or 2060",
+    "Prereq":"2231;2421",
     "Type":"N/A"
 },{
     "Number":"3461",
     "Area" : "CSE",
     "Title":"Computer Networking and Internet Technologies",
     "Units":"3",
-    "Prereq":"Prereq: 2421; or 3430; or 2451 and ECE 2560. Prereq or concur: 2431 or 3430.",
+    "Prereq":"2421",
     "Type":"N/A"
 },{
     "Number":"3521",
     "Area" : "CSE",
     "Title":"Survey of Artificial Intelligence I: Basic Techniques",
     "Units":"3",
-    "Prereq":"Prereq: 2331 or 5331; and Math 2174 or 2568 or 4568 or 5520H; and Stat 3201 or 3450 or 3460 or 3470 or 4201 or Math 4530 or 5530H; and enrollment in CSE, CIS, ECE or Data Analytics major.",
+    "Prereq":"2331;2568;3470",
     "Type":"N/A"
 },{
     "Number":"3541",
     "Area" : "CSE",
     "Title":"Computer Game and Animation Techniques",
     "Units":"3",
-    "Prereq":"Prereq: 3901, 3902, or 3903; and enrollment in CSE, CIS, Music (BS), or ECE major.",
+    "Prereq":"3901,3902,3903",
     "Type":"N/A"
 },{
     "Number":"5911",
     "Area" : "CSE",
     "Title":"Capstone Design: Software Applications",
     "Units":"4",
-    "Prereq":"Prereq: 3231 or 5231, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing.",
+    "Prereq":"3231;2501;3901,3902,3903;2367",
     "Type":"CAPSTONE"
 },{
     "Number":"5912",
     "Area" : "CSE",
     "Title":"Capstone Design: Game Design and Development",
     "Units":"4",
-    "Prereq":"Prereq: 3541 or 5541, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and 2nd writing course; or Grad standing.",
+    "Prereq":"3541;2501;3901,3902,3903;2367",
     "Type":"CAPSTONE"
 },{
     "Number":"5913",
     "Area" : "CSE",
     "Title":"Capstone Design: Computer Animation",
     "Units":"4",
-    "Prereq":"Prereq: 3541 or 5541, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing.",
+    "Prereq":"3541;2501;3901,3902,3903;2367",
     "Type":"CAPSTONE"
 },{
     "Number":"5914",
     "Area" : "CSE",
     "Title":"Capstone Design: Knowledge-Based Systems",
     "Units":"4",
-    "Prereq":"Prereq: 3521 or 5521, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing.",
+    "Prereq":"3521;2501;3901,3902,3903;2367",
     "Type":"CAPSTONE"
 },{
     "Number":"5915",
     "Area" : "CSE",
     "Title":"Capstone Design: Information Systems",
     "Units":"4",
-    "Prereq":"Prereq: 3241 or 5241, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing.",
+    "Prereq":"3241;2501;3901,3902,3903;2367",
     "Type":"CAPSTONE"
 },{
     "Number":"5916",
     "Area" : "CSE",
     "Title":"Capstone Design: Research-Focused Projects",
     "Units":"4",
-    "Prereq":"Prereq: 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing.",
+    "Prereq":"2501;3901,3902,3903;2367",
     "Type":"CAPSTONE"
 },{
     "Number":"2020",
     "Area" : "ECE",
     "Title":"Introduction to Analog Systems and Circuits",
     "Units":"3",
-    "Prereq":"Prereq: Math 1152, 1161.01, 1161.02, 1172, or 1181H; and Physics 1250, 1250H, or 1260, or CHEM 1210 or 1250.",
+    "Prereq":"1172;1250",
     "Type":"PREREQ"
 },{
     "Number":"2060",
     "Area" : "ECE",
     "Title":"Introduction to Digital Logic",
     "Units":"3",
-    "Prereq":"CSE 1222, 2221, Engr 1222, 1281.01H, or 1281.02H; and Math 1152, 1161.01, 1161.02, 1172, or 1181H; and Physics 1250, 1250H, or 1260; and Engr 1182.01, 1182.02, 1182.03, 1282.01H, 1282.02H, 1282.03H, 1282.04H, or 1186, 1187",
+    "Prereq":"2221;1172;1250;1182",
     "Type":"PREREQ"
 },{
     "Number":"2568",
     "Area" : "MATH",
     "Title":"Linear Algebra",
     "Units":"3",
-    "Prereq":"1172, 1544, 2153, 2162.xx, 2182H, or 4182H",
+    "Prereq":"1172",
     "Type":"PREREQ"
 },{
     "Number":"3345",
     "Area" : "MATH",
     "Title":"Foundations of Higher Mathematics",
     "Units":"3",
-    "Prereq":"CSE 2321; and 1161.xx, 1172, 1181H, 1534, 1544, 1152, or 4181H.",
+    "Prereq":"2321;1172",
     "Type":"N/A"
 },{
     "Number":"3470",
     "Area" : "STAT",
     "Title":"Introduction to Probability and Statistics for Engineers",
     "Units":"3",
-    "Prereq":"Math 1152, 1161.xx, 1172, 1181H",
+    "Prereq":"1172",
     "Type":"PREREQ"
 },{
     "Number":"1151",
     "Area" : "MATH",
     "Title":"Calculus 1",
     "Units":"5",
-    "Prereq":"A grade of C- or above in 1148 and 1149, or in 1144, 1150, or 150, or Math Placement Level L",
+    "Prereq":"",
     "Type":"PREREQ"
 },{
     "Number":"1172",
     "Area" : "MATH",
     "Title":"Engineering Mathematics A",
     "Units":"5",
-    "Prereq":"Prereq: A grade of C- or above in 1114 (114), 1141, 1151, 1156, 1161.xx, 152.xx, 161.xx, or 161.01H",
+    "Prereq":"1151",
     "Type":"N/A"
 },{
     "Number":"1250",
     "Area" : "PHYSICS",
     "Title":"Mechanics, Work and Energy, Thermal Physics",
     "Units":"5",
-    "Prereq":"Math 1141, 1151, 1156, 1161, 1181H, or 4181H",
+    "Prereq":"1151",
     "Type":"N/A"
 },{
     "Number":"1181",
     "Area" : "ENGR",
     "Title":"Fundamentals of Engineering I",
     "Units":"2",
-    "Prereq":"Math 1151",
+    "Prereq":"1151",
     "Type":"PREREQ"
 },{
     "Number":"1182",
@@ -240,5 +233,18 @@
     "Units":"2",
     "Prereq":"1181",
     "Type":"N/A"
+},{
+    "Number":"1223",
+    "Area" : "CSE",
+    "Title":"Introduction to Computer Programming in Java",
+    "Units":"3",
+    "Prereq":"1151",
+    "Type":"PREREQ"
+},{
+    "Number":"2367",
+    "Area":"MULTIPLE",
+    "Title":"Second Year Writing Course",
+    "Units":"3",
+    "Type":"PREREQ"
 }
 ]
