@@ -97,9 +97,26 @@ main{
     fill: darkgreen;
 }
 
-.nodeLabel{
-    font-size: 15;
-    font-family: 'Courier New', Courier, monospace;
-    fill: beige;
+.clusters rect {
+    fill: #00ffd0;
+    stroke: #999;
+    stroke-width: 1.5px;
 }
 
+text {
+    font-weight: 300;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+    font-size: 14px;
+    fill: whitesmoke;
+}
+
+.node rect {
+    stroke: #999;
+    fill: green;
+    stroke-width: 1.5px;
+}
+
+.edgePath path {
+    stroke: #333;
+    stroke-width: 1.5px;
+}
