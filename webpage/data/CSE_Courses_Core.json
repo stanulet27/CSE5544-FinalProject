@@ -1,0 +1,250 @@
+[{
+    "Number":"2221",
+    "Area" : "CSE",
+    "Title":"Software I: Software Components",
+    "Units":"4",
+    "Prereq":"1223",
+    "Concur":"1151",
+    "Type":"CORE"
+},{
+    "Number":"2231",
+    "Area" : "CSE",
+    "Title":"Software II: Software Development and Design",
+    "Units":"4",
+    "Prereq":"2221",
+    "Concur":"2321",
+    "Type":"CORE"
+},{
+    "Number":"2321",
+    "Area" : "CSE",
+    "Title":"Foundations I: Discrete Structures",
+    "Units":"3",
+    "Prereq":"2221;1151",
+    "Concur":"2231",  
+    "Type":"CORE"
+},{
+    "Number":"2331",
+    "Area" : "CSE",
+    "Title":"Foundations II: Data Structures and Algorithms",
+    "Units":"3",
+    "Prereq":"2321;3470",
+    "Concur":"Math 3345",
+    "Type":"CORE"
+},{
+    "Number":"2421",
+    "Area" : "CSE",
+    "Title":"Systems I: Introduction to Low-Level Programming and Computer Organization",
+    "Units":"4",
+    "Prereq":"2231;2321",
+    "Type":"N/A"
+},{
+    "Number":"2431",
+    "Area" : "CSE",
+    "Title":"Systems II: Introduction to Operating Systems",
+    "Units":"3",
+    "Prereq":"2421",
+    "Type":"N/A"
+},{
+    "Number":"3341",
+    "Area" : "CSE",
+    "Title":"Principles of Programming Languages",
+    "Units":"3",
+    "Prereq":"2231;2331;3901,3902,3903",
+    "Type":"N/A"
+},{
+    "Number":"2501",
+    "Area" : "CSE",
+    "Title":"Social, Ethical, and Professional Issues in Computing",
+    "Units":"1",
+    "Prereq":"2231;2367",
+    "Type":"N/A"
+},{
+    "Number":"3901",
+    "Area" : "CSE",
+    "Title":"Project: Design, Development, and Documentation of Web Applications",
+    "Units":"4",
+    "Prereq":"2231;2321;2421",
+    "Type":"N/A"
+},{
+    "Number":"3902",
+    "Area" : "CSE",
+    "Title":"Project: Design, Development, and Documentation of Interactive Systems",
+    "Units":"4",
+    "Prereq":"2231;2321;2421",
+    "Type":"N/A"
+},{
+    "Number":"3903",
+    "Area" : "CSE",
+    "Title":"Project: Design, Development, and Documentation of System Software",
+    "Units":"4",
+    "Prereq":"2231;2321;2421",
+    "Type":"N/A"
+},{
+    "Number":"3231",
+    "Area" : "CSE",
+    "Title":"Software Engineering Techniques",
+    "Units":"3",
+    "Prereq":"3901,3902,3903",
+    "Type":"N/A"
+},{
+    "Number":"3241",
+    "Area" : "CSE",
+    "Title":"Introduction to Database Systems",
+    "Units":"3",
+    "Prereq":"2231;2321",
+    "Type":"N/A"
+},{
+    "Number":"3421",
+    "Area" : "CSE",
+    "Title":"Introduction to Computer Architecture",
+    "Units":"3",
+    "Prereq":"2231;2421",
+    "Type":"N/A"
+},{
+    "Number":"3461",
+    "Area" : "CSE",
+    "Title":"Computer Networking and Internet Technologies",
+    "Units":"3",
+    "Prereq":"2421",
+    "Type":"N/A"
+},{
+    "Number":"3521",
+    "Area" : "CSE",
+    "Title":"Survey of Artificial Intelligence I: Basic Techniques",
+    "Units":"3",
+    "Prereq":"2331;2568;3470",
+    "Type":"N/A"
+},{
+    "Number":"3541",
+    "Area" : "CSE",
+    "Title":"Computer Game and Animation Techniques",
+    "Units":"3",
+    "Prereq":"3901,3902,3903",
+    "Type":"N/A"
+},{
+    "Number":"5911",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Software Applications",
+    "Units":"4",
+    "Prereq":"3231;2501;3901,3902,3903;2367",
+    "Type":"CAPSTONE"
+},{
+    "Number":"5912",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Game Design and Development",
+    "Units":"4",
+    "Prereq":"3541;2501;3901,3902,3903;2367",
+    "Type":"CAPSTONE"
+},{
+    "Number":"5913",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Computer Animation",
+    "Units":"4",
+    "Prereq":"3541;2501;3901,3902,3903;2367",
+    "Type":"CAPSTONE"
+},{
+    "Number":"5914",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Knowledge-Based Systems",
+    "Units":"4",
+    "Prereq":"3521;2501;3901,3902,3903;2367",
+    "Type":"CAPSTONE"
+},{
+    "Number":"5915",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Information Systems",
+    "Units":"4",
+    "Prereq":"3241;2501;3901,3902,3903;2367",
+    "Type":"CAPSTONE"
+},{
+    "Number":"5916",
+    "Area" : "CSE",
+    "Title":"Capstone Design: Research-Focused Projects",
+    "Units":"4",
+    "Prereq":"2501;3901,3902,3903;2367",
+    "Type":"CAPSTONE"
+},{
+    "Number":"2020",
+    "Area" : "ECE",
+    "Title":"Introduction to Analog Systems and Circuits",
+    "Units":"3",
+    "Prereq":"1172;1250",
+    "Type":"PREREQ"
+},{
+    "Number":"2060",
+    "Area" : "ECE",
+    "Title":"Introduction to Digital Logic",
+    "Units":"3",
+    "Prereq":"2221;1172;1250;1182",
+    "Type":"PREREQ"
+},{
+    "Number":"2568",
+    "Area" : "MATH",
+    "Title":"Linear Algebra",
+    "Units":"3",
+    "Prereq":"1172",
+    "Type":"PREREQ"
+},{
+    "Number":"3345",
+    "Area" : "MATH",
+    "Title":"Foundations of Higher Mathematics",
+    "Units":"3",
+    "Prereq":"2321;1172",
+    "Type":"N/A"
+},{
+    "Number":"3470",
+    "Area" : "STAT",
+    "Title":"Introduction to Probability and Statistics for Engineers",
+    "Units":"3",
+    "Prereq":"1172",
+    "Type":"PREREQ"
+},{
+    "Number":"1151",
+    "Area" : "MATH",
+    "Title":"Calculus 1",
+    "Units":"5",
+    "Prereq":"",
+    "Type":"PREREQ"
+},{
+    "Number":"1172",
+    "Area" : "MATH",
+    "Title":"Engineering Mathematics A",
+    "Units":"5",
+    "Prereq":"1151",
+    "Type":"N/A"
+},{
+    "Number":"1250",
+    "Area" : "PHYSICS",
+    "Title":"Mechanics, Work and Energy, Thermal Physics",
+    "Units":"5",
+    "Prereq":"1151",
+    "Type":"N/A"
+},{
+    "Number":"1181",
+    "Area" : "ENGR",
+    "Title":"Fundamentals of Engineering I",
+    "Units":"2",
+    "Prereq":"1151",
+    "Type":"PREREQ"
+},{
+    "Number":"1182",
+    "Area" : "ENGR",
+    "Title":"Fundamentals of Engineering II",
+    "Units":"2",
+    "Prereq":"1181",
+    "Type":"N/A"
+},{
+    "Number":"1223",
+    "Area" : "CSE",
+    "Title":"Introduction to Computer Programming in Java",
+    "Units":"3",
+    "Prereq":"1151",
+    "Type":"PREREQ"
+},{
+    "Number":"2367",
+    "Area":"MULTIPLE",
+    "Title":"Second Year Writing Course",
+    "Units":"3",
+    "Type":"PREREQ"
+}
+]

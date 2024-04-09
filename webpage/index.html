@@ -63,7 +63,7 @@
                 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
                 //Load Json files
-                var specializaitonsData = await d3.json("data/CSE_Courses_Specialization.json");
+                var specializationsData = await d3.json("data/CSE_Courses_Specialization.json");
                 //console.log(specializaitonData);
 
                 //Read the specialization selected 
@@ -83,8 +83,9 @@
                         //Get only the values of the selected specialization
                         const selectedSpecializationCourses = [];
 
-                        specializaitonsData.forEach(element => {
-                            if(element.Type == selectedSpecialization)
+                        specializationsData.forEach(element => {
+
+                            if(element.Specialization == selectedSpecialization)
                             {
                                 //console.log(element.Number);
                                 selectedSpecializationCourses.push(element)
