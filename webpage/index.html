@@ -76,6 +76,7 @@
 
                     //Select the svg where the graph will be drawn
                     const svgCourseGraph = d3.select("#course-graph");
+                    svgCourseGraph.select("g").remove();
 
                     //If None is selected, clear all graphics
                     if(selectedSpecialization != "None")
@@ -83,9 +84,10 @@
                         //Get only the values of the selected specialization
                         const selectedSpecializationCourses = [];
 
-                        specializationsData.forEach(element => {
-
-                            if(element.Specialization == selectedSpecialization)
+                        specializationsData.forEach(element => 
+                        {
+                            // Append only the required courses from the specialization
+                            if(element.Specialization == selectedSpecialization && element.Type == "REQUIRED")
                             {
                                 //console.log(element.Number);
                                 selectedSpecializationCourses.push(element)
@@ -100,7 +102,8 @@
                         // Setting the specialization nodes
                         selectedSpecializationCourses.forEach(course => 
                         {
-                            g.setNode(course.Number,{label : course.Number + ":" + course.Title, style: 'fill: green; text-align: center'});
+
+                            g.setNode(course.Number,{label : course.Number + ":" + course.Title, style: 'fill: green; text-align: center',id:course.Number});
 
                         })
 
@@ -135,8 +138,10 @@
                                 }
                                 else // There are no OR Preqrequisites, append nodes as they are and define edges
                                 {
-                                    //g.setNode(andPrereq,{lable : andPrereq, style: 'fill: blue'});
-                                    //g.setEdge(andPrereq,course.Number);
+                                    if(!g.hasNode(andPrereq)){
+                                        g.setNode(andPrereq,{label : andPrereq, style: 'fill: blue',id:andPrereq});
+                                        g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
+                                    }
                                 }
 
                             })
@@ -165,6 +170,46 @@
                         svgCourseGraph.select("g").attr("transform", "translate(" + xCenterOffset + ", 20)");
                         svgCourseGraph.attr("height", g.graph().height + 40);
                         // ---------------------------------------------------------------------------------------------------------------
+
+                        // ----------------------------------------- Mouse Interaction ---------------------------------------------------
+                        
+                        // Adding mouse click to tspan, since it is the biggest surface on the nodes
+                        d3.selectAll(".node").on("mouseenter",function()
+                        {
+                            nodeId = d3.select(this).property("id");
+                            allNodeEdges = g.nodeEdges(nodeId);
+
+                            allNodeEdges.forEach(edge => 
+                            {
+                                //console.log(edge.v);
+                                edgeId = "edge"+ edge.v + "-" + edge.w;
+                                //console.log(edgeId);
+                                d3.selectAll("#" + edgeId).selectAll("path").style("stroke","red");
+                                d3.selectAll("#" + edgeId).selectAll("defs").selectAll("marker").selectAll("path").style("fill","red");
+
+                            })
+                            
+                        })
+                        .on("mouseleave", function()
+                        {
+                            nodeId = d3.select(this).property("id");
+                            allNodeEdges = g.nodeEdges(nodeId);
+
+                            allNodeEdges.forEach(edge => 
+                            {
+                                //console.log(edge.v);
+                                edgeId = "edge"+ edge.v + "-" + edge.w;
+                                //console.log(edgeId);
+                                d3.selectAll("#" + edgeId).selectAll("path").style("stroke","black");
+                                d3.selectAll("#" + edgeId).selectAll("defs").selectAll("marker").selectAll("path").style("fill","black");
+
+                            })
+
+                        })
+
+
+
+                        //-----------------------------------------------------------------------------------------------------------------
                     }
                 })
                 
