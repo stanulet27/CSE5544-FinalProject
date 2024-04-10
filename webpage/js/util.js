@@ -41,8 +41,8 @@ async function interactionHandler()
 {
     //Load Json files
     var specializationsData = await d3.json("data/CSE_Courses_Specialization.json");
-    var coreClasses = await d3.json("data/CSE_Courses_Core.json");
     var selectionOptions = await d3.json("data/Choice_Options.json");
+    var coreClassesData = await d3.json("data/CSE_Courses_Core_Updated.json");
 
     //Get selectionOptions unique IDs array
     var selectionOptionsUniqueNumbers = [];
@@ -65,7 +65,6 @@ async function interactionHandler()
     {
         clearGraph();
         clearSelectionArea();
-        allCoursesToRender = [];
 
         //console.log("Interaction at the dropdown menu");
         var selectedSpecialization = this.value;
@@ -107,7 +106,7 @@ async function interactionHandler()
                         if(!allCoursesToRender.includes(andPrereq))
                         {
                             //Get the details from CORE courses
-                            coreClasses.forEach( coreClass => 
+                            coreClassesData.forEach( coreClass => 
                             {
                                 if(coreClass.Number == andPrereq)
                                 {
@@ -120,7 +119,7 @@ async function interactionHandler()
             });
             
             //Now we go through all the CORE classes and add them to the array, if they were already added, we don't include them.
-            coreClasses.forEach(coreClass => 
+            coreClassesData.forEach(coreClass => 
             {
                 //Check if they are already on the array
                 if(!allCoursesToRender.includes(coreClass.Number))
@@ -139,17 +138,96 @@ async function interactionHandler()
     }
     else//----------------------------------------------------------------------- CHECKBOX INTERACTION ---------------------------------------------------------------------
     {
+        clearGraph();
+
         var checkboxes = document.querySelectorAll("input[type=checkbox]");
-        let selectedClasses = [];
-        //console.log("Checkbox changed")
-        selectedClasses = Array.from(checkboxes)
-                                .filter(i => i.checked) 
-                                .map(i => i.value); 
-        var selectedCourses = returnSelectedChoices(coreClasses, specializationsData,selectedClasses);
-        console.log(selectedCourses);
+        var selectedClasses = Array.from(checkboxes).filter(i => i.checked).map(i => i.value);
+        //console.log(selectedClasses);
 
-        // Now that some courses were selected, we need to add them to the graph and their prereqs
+        //First lets find the course details for each course
+        var coursesToAdd = [];
 
+        selectedClasses.forEach((selectedClass,i) => 
+        {
+            specializationsData.forEach(element => 
+            {
+                // Append only the required courses from the specialization
+                if(element.Number == selectedClass && document.getElementById("specializations").value == element.Specialization)
+                {
+                    coursesToAdd.push(element);
+                }  
+            });
+
+            coreClassesData.forEach(coreClass => 
+            {
+                if(coreClass.Number == selectedClass)
+                {
+                    coursesToAdd.push(coreClass);
+                }  
+            })
+            
+        })
+
+        //---------------------------------------------- ALL COURSES ARRAY CREATION --------------------------------------------------
+        
+        //Now that we know which specialization was selected we can add specialization courses that are required (options are not included in this step), to the ALL COURSES ARRAY
+        specializationsData.forEach(element => 
+        {
+            // Append only the required courses from the specialization
+            if(element.Specialization == document.getElementById("specializations").value && element.Type == "REQUIRED")
+            {
+                allCoursesToRender.push(element)
+            }  
+        });
+
+        //Now we iterate on the specialization courses to add details of their prereqs, we add them to the ALL COURSES ARRAY
+        allCoursesToRender.forEach(element => 
+        {
+            //Find the "AND" prereq information
+            var andPrereqs = element.Prereq.split(";");
+            andPrereqs.forEach(andPrereq => 
+            {
+                if(!andPrereq.includes(",")) // Exclude all OR prereqs
+                {
+                    // We look if the prereq is already on ALL COURSES ARRAY
+                    // If it is not, we get the details from the CORE courses, then we append it.
+                    if(!allCoursesToRender.includes(andPrereq))
+                    {
+                        //Get the details from CORE courses
+                        coreClassesData.forEach( coreClass => 
+                        {
+                            if(coreClass.Number == andPrereq)
+                            {
+                                allCoursesToRender.push(coreClass);
+                            }
+                        })   
+                    }   
+                }
+            })
+        });
+        
+        //Now we go through all the CORE classes and add them to the array, if they were already added, we don't include them.
+        coreClassesData.forEach(coreClass => 
+        {
+            //Check if they are already on the array
+            if(!allCoursesToRender.includes(coreClass.Number))
+            {
+                //We also need to check they are not from the selection area
+                if(!selectionOptionsUniqueNumbers.includes(coreClass.Number))
+                {
+                    allCoursesToRender.push(coreClass);
+                }
+            }   
+        })
+
+        //Understand if we need to add or remove nodes
+        coursesToAdd.forEach(course => 
+        {
+            allCoursesToRender.push(course);
+        })
+
+        //---------------------------------------------- DAG Creation --------------------------------------------------
+        updateGraph(allCoursesToRender);
     }
 
 }
@@ -194,19 +272,21 @@ function updateGraph(coursesInformation)
     });
 
     //------------------------------------------------------------------------ EDGES --------------------------------------------------------------------------
-    coursesInformation.forEach( course => 
+    coursesInformation.forEach(course => 
     {
-        console.log(course);
+        //console.log(course);
         //g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
+        
         //Find the "AND" prereq information
+        //console.log(course.Prereq);
         var andPrereqs = course.Prereq.split(";");
-        // andPrereqs.forEach(andPrereq => 
-        // {
-        //     if(!andPrereq.includes(",")) // Exclude all OR prereqs
-        //     {
-        //         g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
-        //     }
-        // })
+        andPrereqs.forEach(andPrereq => 
+        {
+            if(!andPrereq.includes(",") && andPrereq != "NA") // Exclude all OR prereqs
+            {
+                g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
+            }
+        })
     })
 
     //Graphic adjustment of nodes
@@ -218,15 +298,17 @@ function updateGraph(coursesInformation)
     });
 
     // Set up an SVG group so that we can translate the final graph.
-    var svgGroup = svgCourseGraph.append("g");
+    svgCourseGraph.append("g");
 
     // Run the renderer. This is what draws the final graph.
     render(svgCourseGraph.select("g"), g);
 
     // Center the graph
+    var initialScale = 1;
     var xCenterOffset = (window.innerWidth - g.graph().width) / 2;
-    svgCourseGraph.select("g").attr("transform", "translate(" + xCenterOffset + ", 100)");
-    svgCourseGraph.attr("height", g.graph().height + 40);
+    svgCourseGraph.select("g").attr("transform", "translate(" + xCenterOffset + ", 20)");
+    //svgCourseGraph.select("g").attr("transform", "translate(" + 0 + ", 20)");
+    svgCourseGraph.attr("height", g.graph().height * initialScale + 40);
     
     // ----------------------------------------- Mouse Interaction ---------------------------------------------------
     // Adding mouse click to tspan, since it is the biggest surface on the nodes
@@ -240,11 +322,10 @@ function updateGraph(coursesInformation)
             //console.log(edge.v);
             var edgeId = "edge"+ edge.v + "-" + edge.w;
             //console.log(edgeId);
-            d3.selectAll("#" + edgeId).selectAll("path").style("stroke","red");
+            d3.selectAll("#" + edgeId).selectAll("path").style("stroke","red").style("stroke-width","3");
             d3.selectAll("#" + edgeId).selectAll("defs").selectAll("marker").selectAll("path").style("fill","red");
-
         })
-        
+
     })
     .on("mouseleave", function()
     {
@@ -256,7 +337,7 @@ function updateGraph(coursesInformation)
             //console.log(edge.v);
             var edgeId = "edge"+ edge.v + "-" + edge.w;
             //console.log(edgeId);
-            d3.selectAll("#" + edgeId).selectAll("path").style("stroke","black");
+            d3.selectAll("#" + edgeId).selectAll("path").style("stroke","black").style("stroke-width","1");;
             d3.selectAll("#" + edgeId).selectAll("defs").selectAll("marker").selectAll("path").style("fill","black");
 
         })

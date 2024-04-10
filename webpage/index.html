@@ -54,60 +54,9 @@
             //Main app definition
             var app = async function () 
             {
-                // --------------------------------------------------- CHECKBOX SELECTION --------------------------------------------------
-                //Add event listener to checkbox selection
-                // var checkboxes = document.querySelectorAll("input[type=checkbox]");
-                // let selectedClasses = []
-                // checkboxes.forEach(function(checkbox) 
-                // {
-                //     checkbox.addEventListener('change', interactionHandler)
-                //     // checkbox.addEventListener('change', function() 
-                //     // {
-                //     //     console.log("Checkbox changed")
-                //     //     selectedClasses = Array.from(checkboxes)
-                //     //         .filter(i => i.checked) 
-                //     //         .map(i => i.value) 
-                //     //     selectedCourses = returnSelectedChoices(coreClasses, specializationsData,selectedClasses);
-                //     //     console.log(selectedCourses);
-                //     // })
-                // });
-
-                //this is the set of courses where no choice is available
-                //var noChoiceCoreCourses = returnBaseCourses(coreClasses, selectionOptions);
-                //var noChoiceSpecializationCourses = returnBaseCourses(specializationsData, selectionOptions);
-                
                 // -------------------------------------------------- DROPDOWN -----------------------------------------------------------------
-                //Read the specialization selected from dropdown menu
                 var specializationDropdown = document.getElementById("specializations");
-                specializationDropdown.addEventListener('change', interactionHandler);
-
-                // specializationDropdown.addEventListener('change', function(){
-
-                // Setting the prereq nodes
-                // selectedSpecializationCourses.forEach(course => 
-                // {
-                //     //Get AND Prereqs
-                //     var andPrereqs = course.Prereq.split(";");
-                //     //console.log(andPrereqs);
-
-                //     andPrereqs.forEach(andPrereq => {
-                        
-                //         if(andPrereq.includes(",")) // There are OR Prereqs that need to be checked
-                //         {
-
-                //         }
-                //         else // There are no OR Preqrequisites, append nodes as they are and define edges
-                //         {
-                //             if(!g.hasNode(andPrereq)){
-                //                 g.setNode(andPrereq,{label : andPrereq, style: 'fill: blue',id:andPrereq});
-                //                 g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
-                //             }
-                //         }
-
-                //     })
-
-                // })
-                
+                specializationDropdown.addEventListener('change', interactionHandler);                
             }
             app();
 
