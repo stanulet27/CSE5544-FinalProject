@@ -24,12 +24,40 @@ function returnSelectedCourses(courseSet, selections)
     return selectedCourses;
 }
 
+function containsValue(arr,v)
+{
+    arr.forEach(arrV => 
+    {
+        found = false;
+        if(arrV == v)
+        {
+            found = true;
+        }
+
+        return found;
+    })
+}
 async function interactionHandler()
 {
     //Load Json files
     var specializationsData = await d3.json("data/CSE_Courses_Specialization.json");
     var coreClasses = await d3.json("data/CSE_Courses_Core.json");
     var selectionOptions = await d3.json("data/Choice_Options.json");
+
+    //Get selectionOptions unique IDs array
+    var selectionOptionsUniqueNumbers = [];
+    selectionOptions.forEach(option => {
+        option.Choices.forEach(courseNumber =>
+        {
+            if(!selectionOptionsUniqueNumbers.includes(courseNumber.id))
+            {
+                selectionOptionsUniqueNumbers.push(courseNumber.id);
+            }
+
+        })
+    });
+
+    //Array to include al courses we want to render
     var allCoursesToRender = [];
     
     //------------------------------------------------------ DROPDOWN INTERACTION -------------------------------------------------------------------------
@@ -65,9 +93,6 @@ async function interactionHandler()
                 }  
             });
 
-            console.log("All courses with Specialization Required:")
-            console.log(allCoursesToRender);
-
             //Now we iterate on the specialization courses to add details of their prereqs, we add them to the ALL COURSES ARRAY
             allCoursesToRender.forEach(element => 
             {
@@ -86,20 +111,27 @@ async function interactionHandler()
                             {
                                 if(coreClass.Number == andPrereq)
                                 {
-                                    var newElement = element
-                                    allCoursesToRender.push(newElement);
+                                    allCoursesToRender.push(coreClass);
                                 }
                             })   
                         }   
                     }
                 })
             });
-
-            console.log("All courses with Specialization Prereqs:")
-            console.log(allCoursesToRender);
-
             
-            //Now we go through all the CORE classes and add them to the array, if they were already added, we don't include them, we add them to the ALL COURSES ARRAY
+            //Now we go through all the CORE classes and add them to the array, if they were already added, we don't include them.
+            coreClasses.forEach(coreClass => 
+            {
+                //Check if they are already on the array
+                if(!allCoursesToRender.includes(coreClass.Number))
+                {
+                    //We also need to check they are not from the selection area
+                    if(!selectionOptionsUniqueNumbers.includes(coreClass.Number))
+                    {
+                        allCoursesToRender.push(coreClass);
+                    }
+                }   
+            })
 
             //---------------------------------------------- DAG Creation --------------------------------------------------
             updateGraph(allCoursesToRender);
@@ -133,7 +165,7 @@ function clearSelectionArea()
     d3.selectAll("#selection_area").html("");
 }
 
-function updateGraph(courseInformation)
+function updateGraph(coursesInformation)
 {
     // Create the renderer for graph
     var render = new dagreD3.render();
@@ -147,26 +179,35 @@ function updateGraph(courseInformation)
     const svgCourseGraph = d3.select("#course-graph");
 
     //Iterate through all the courses to set edges and nodes
-    //Set first specialization courses
-    courseInformation.forEach(course => 
+    // ---------------------------------------------------------------------- NODES --------------------------------------------------------------------------
+    coursesInformation.forEach(course => 
     {
-        g.setNode(course.Number,{label : course.Number + ":" + course.Title, style: 'fill: green; text-align: center',id:course.Number});
+        if(course.Type == "REQUIRED" || course.Type == "OPTION")
+        {
+            g.setNode(course.Number,{label : course.Number + ": " + course.Title, style: 'fill: green; text-align: center',id:course.Number});
+        }
+        else
+        {
+            g.setNode(course.Number,{label : course.Number + ": " + course.Title, style: 'fill: blue; text-align: center',id:course.Number});
+        }
+
     });
 
-    //Set second all core courses and prereqs courses
-    // courseInformation.foreach( course => 
-    // {
-    //     if(!g.hasNode("")) // Only add a node if the node does not already exist
-    //     {
-    //         g.setNode(andPrereq,{label : andPrereq, style: 'fill: blue',id:andPrereq});
-    //         g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
-    //     }
-    //     else // If the node already exists, we still need to add the edge
-    //     {
-
-    //     }
-
-    // })
+    //------------------------------------------------------------------------ EDGES --------------------------------------------------------------------------
+    coursesInformation.forEach( course => 
+    {
+        console.log(course);
+        //g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
+        //Find the "AND" prereq information
+        var andPrereqs = course.Prereq.split(";");
+        // andPrereqs.forEach(andPrereq => 
+        // {
+        //     if(!andPrereq.includes(",")) // Exclude all OR prereqs
+        //     {
+        //         g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
+        //     }
+        // })
+    })
 
     //Graphic adjustment of nodes
     g.nodes().forEach(function(v) 

@@ -245,6 +245,7 @@
     "Area":"MULTIPLE",
     "Title":"Second Year Writing Course",
     "Units":"3",
+    "Prereq":"",
     "Type":"PREREQ"
 }
 ]
