@@ -4,150 +4,59 @@
     <meta charset="UTF-8">
     <title>OSU CSE Course Visualization</title>
     <script src="js\d3.v7.js"></script>
+    <script src="js/dagre.js"></script>
+    <script src="js/dagre-d3.js"></script>
     <link rel="stylesheet" href="css\style.css">
 </head>
 <body>
-    <div class="main-container">
-        <header>
-            <svg class="site-title-container">
-                <path class= "title-background" d="M 0 0 V 100 H 800 L 750 0 Z"/>
-                <text class="title-text" x="30" y="90">CSE Course Visualization</text>
-            </svg>
-            <img class="site-logo" src="img\logo.png" alt="The Ohio State University College of Engineering">
-        </header>
-        <main>
-            <div class="user-menu-container">
-                <div id = "specialization_selection">
-                <label class="dropdown-label" for="specializations">Select a specialization:</label>
-                <select class="dropdown-menu" name="specializations" id="specializations">
-                    <option value="None"></option>
-                    <option value="AIT">Artificial Intelligence</option>
-                    <option value="CGG">Computer Graphics and Game Design</option>
-                    <option value="DBA">Database Systems and Data Analytics</option>
-                    <option value="ICA">Information and Computation Assurance</option>
-                    <option value="CNT">Computer Networking</option>
-                    <option value="CSY">Computer Systems</option>
-                    <option value="SWS">Software Engineering</option>
-                </select>
-                </div>
-                <div id="selection_area">
-                    <!--Selection Area will be rendered here-->
-                </div>
-                <div id="settings"><!--TODO--></div>
+    <header>
+        <svg class="site-title-container">
+            <path class= "title-background" d="M 0 0 V 100 H 800 L 750 0 Z"/>
+            <text class="title-text" x="30" y="90">CSE Course Visualization</text>
+        </svg>
+        <img class="site-logo" src="img\logo.png" alt="The Ohio State University College of Engineering">
+    </header>
+    <main>
+        <div class="user-menu-container">
+            <div id = "specialization_selection">
+            <label class="dropdown-label" for="specializations">Select a specialization:</label>
+            <select class="dropdown-menu" name="specializations" id="specializations">
+                <option value="None"></option>
+                <option value="AIT">Artificial Intelligence</option>
+                <option value="CGG">Computer Graphics and Game Design</option>
+                <option value="DBA">Database Systems and Data Analytics</option>
+                <option value="ICA">Information and Computation Assurance</option>
+                <option value="CNT">Computer Networking</option>
+                <option value="CSY">Computer Systems</option>
+                <option value="SWS">Software Engineering</option>
+            </select>
             </div>
-            <div class="graph-container">
-                <svg id="course-graph" ></svg>
+            <div id="selection_area">
+                <!--Selection Area will be rendered here-->
             </div>
-        </main>
-        <footer>
-            <p class="auth-info">Authors:<br>
-                Saul Ibaven - ibavenbueno.1@buckeyemail.osu.edu<br>
-                Chris Stanulet - stanulet.1@buckeyemail.osu.edu
-            </p>
-        </footer>
-    </div>
+            <div id="settings"><!--TODO--></div>
+        </div>
+        <div class="graph-container">
+            <svg id="course-graph" ></svg>
+        </div>
+    </main>
+    <footer>
+        <p class="auth-info">Authors:<br>
+            Saul Ibaven - ibavenbueno.1@buckeyemail.osu.edu<br>
+            Chris Stanulet - stanulet.1@buckeyemail.osu.edu
+        </p>
+    </footer>
     <script type="module">
-            import {renderChoices,returnSelectedChoices} from './js/SelectionArea.js';
-            import {returnBaseCourses} from './js/util.js';
+            //import {renderChoices,returnSelectedChoices} from './js/SelectionArea.js';
+            import {returnBaseCourses,interactionHandler} from './js/util.js';
 
             var selectedCourses = [];
             //Main app definition
             var app = async function () 
             {
-                //Load Json files
-                var specializationData = await d3.json("data/CSE_Courses_Specialization.json");
-                var coreClasses = await d3.json("data/CSE_Courses_Core.json");
-                var selectionOptions = await d3.json("data/Choice_Options.json");
-                //console.log(specializaitonData);
-
-                renderChoices(selectionOptions, document.getElementById("selection_area"));
-
-                var checkboxes = document.querySelectorAll("input[type=checkbox]");
-                let selectedClasses = []
-                checkboxes.forEach(function(checkbox) {
-                checkbox.addEventListener('change', function() {
-                    console.log("Checkbox changed")
-                    selectedClasses = 
-                    Array.from(checkboxes)
-                    .filter(i => i.checked) 
-                    .map(i => i.value) 
-                    selectedCourses = returnSelectedChoices(coreClasses, specializationData,selectedClasses);
-                    console.log(selectedCourses);
-                    })
-                });
-
-                //this is the set of courses where no choice is available
-                var noChoiceCoreCourses = returnBaseCourses(coreClasses, selectionOptions);
-                var noChoiceSpecializationCourses = returnBaseCourses(specializationData, selectionOptions);
-                
-
-                //Read the specialization selected 
+                // -------------------------------------------------- DROPDOWN -----------------------------------------------------------------
                 var specializationDropdown = document.getElementById("specializations");
-                specializationDropdown.addEventListener('change', function handleChange(){
-
-                    //--------------- Draw graph everytime that selection is changed --------------------------
-                    //Read the new selection
-                    var selectedSpecialization = specializationDropdown.value
-
-                    //Select the svg where the graph will be drawn
-                    const svgCourseGraph = d3.select("#course-graph");
-                    //Clear all items in the svg  
-                    svgCourseGraph.selectAll("svg > *").remove();
-
-                    //If None is selected, clear all graphics
-                    if(selectedSpecialization != "None")
-                    {
-                        //Get only the values of the selected specialization
-                        const selectedSpecializationCourses = [];
-
-                        specializationData.forEach(element => {
-
-                            if(element.Specialization == selectedSpecialization)
-                            {
-                                //console.log(element.Number);
-                                selectedSpecializationCourses.push(element)
-                            }  
-                        });
-
-                        console.log(selectedSpecializationCourses);
-
-                        // Initializing force simulation
-                        const simulation = d3.forceSimulation()
-                            .force("charge", d3.forceManyBody())
-                            .force("center", d3.forceCenter(document.getElementById("course-graph").clientWidth/2, document.getElementById("course-graph").clientHeight/2));
-
-                        //Drawing Nodes
-                        const node = svgCourseGraph.append("g")
-                            .attr("class", "nodes")
-                            .selectAll("rect")
-                            .data(selectedSpecializationCourses)
-                            .enter()
-                            .append("rect")
-                            .attr("width", 100)
-                            .attr("height",50)
-                            .attr("rx","20")
-                            .attr("ry","20");
-                        
-                        //Drawing Node Labels
-                        const nodeLabel = svgCourseGraph.append('g')
-                            .attr("class", "nodeLabel")
-                            .selectAll('text')
-                            .data(selectedSpecializationCourses)
-                            .enter()
-                            .append('text')
-                            .text(node => node.Number)
-                            .attr('dx', 25)
-                            .attr('dy', 25)
-                        
-                        // Applying forces and updating positions
-                        simulation.nodes(selectedSpecializationCourses).on('tick', () => {
-                            node.attr('x', (node) => node.x).attr('y', (node) => node.y)
-                            nodeLabel.attr('x', (node) => node.x).attr('y', (node) => node.y)
-                            })                 
-
-                    }
-                })
-                
+                specializationDropdown.addEventListener('change', interactionHandler);                
             }
             app();
 

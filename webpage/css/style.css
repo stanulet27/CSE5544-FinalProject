@@ -18,12 +18,7 @@ footer{
 }
 
 main{
-    height: 100%;
-}
-
-.main-container{
-    height: 100%;
-    width: 100%;
+    height: 1100px;
 }
 
 .site-title-container{
@@ -76,7 +71,7 @@ main{
     max-height: 150px;
     display:flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:flex-start;
 
 }
 #specialization_selection{
@@ -90,7 +85,6 @@ main{
     justify-content: center;
 
 }
-
 
 .dropdown-label{
 
@@ -110,26 +104,45 @@ main{
 
 .graph-container{
     position: relative;
-    top: 100;
+    top: 0;
     width: 100%;
-    height: 100%;
+    display: flex;
 }
 
 #course-graph{
     position: relative;
     top: 0;
-    height: 100%;
-    width: 100%;
+    display: flex;
+    width: 100%; 
+    flex: 1;
 }
 
 .nodes{
     fill: darkgreen;
 }
 
-.nodeLabel{
-    font-size: 15;
-    font-family: 'Courier New', Courier, monospace;
-    fill: beige;
+.clusters rect {
+    fill: #00ffd0;
+    stroke: #999;
+    stroke-width: 1.5px;
+}
+
+text {
+    font-weight: 300;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+    font-size: 14px;
+    fill: whitesmoke;
+}
+
+.node rect {
+    stroke: #999;
+    fill: green;
+    stroke-width: 1.5px;
+}
+
+.edgePath path {
+    stroke: #333;
+    stroke-width: 1.5px;
 }
 
 p{
@@ -150,4 +163,3 @@ p{
 .choice label{
     flex:1;
 }
-
