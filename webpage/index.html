@@ -9,243 +9,104 @@
     <link rel="stylesheet" href="css\style.css">
 </head>
 <body>
-    <div class="main-container">
-        <header>
-            <svg class="site-title-container">
-                <path class= "title-background" d="M 0 0 V 100 H 800 L 750 0 Z"/>
-                <text class="title-text" x="30" y="90">CSE Course Visualization</text>
-            </svg>
-            <img class="site-logo" src="img\logo.png" alt="The Ohio State University College of Engineering">
-        </header>
-        <main>
-            <div class="user-menu-container">
-                <div id = "specialization_selection">
-                <label class="dropdown-label" for="specializations">Select a specialization:</label>
-                <select class="dropdown-menu" name="specializations" id="specializations">
-                    <option value="None"></option>
-                    <option value="AIT">Artificial Intelligence</option>
-                    <option value="CGG">Computer Graphics and Game Design</option>
-                    <option value="DBA">Database Systems and Data Analytics</option>
-                    <option value="ICA">Information and Computation Assurance</option>
-                    <option value="CNT">Computer Networking</option>
-                    <option value="CSY">Computer Systems</option>
-                    <option value="SWS">Software Engineering</option>
-                </select>
-                </div>
-                <div id="selection_area">
-                    <!--Selection Area will be rendered here-->
-                </div>
-                <div id="settings"><!--TODO--></div>
+    <header>
+        <svg class="site-title-container">
+            <path class= "title-background" d="M 0 0 V 100 H 800 L 750 0 Z"/>
+            <text class="title-text" x="30" y="90">CSE Course Visualization</text>
+        </svg>
+        <img class="site-logo" src="img\logo.png" alt="The Ohio State University College of Engineering">
+    </header>
+    <main>
+        <div class="user-menu-container">
+            <div id = "specialization_selection">
+            <label class="dropdown-label" for="specializations">Select a specialization:</label>
+            <select class="dropdown-menu" name="specializations" id="specializations">
+                <option value="None"></option>
+                <option value="AIT">Artificial Intelligence</option>
+                <option value="CGG">Computer Graphics and Game Design</option>
+                <option value="DBA">Database Systems and Data Analytics</option>
+                <option value="ICA">Information and Computation Assurance</option>
+                <option value="CNT">Computer Networking</option>
+                <option value="CSY">Computer Systems</option>
+                <option value="SWS">Software Engineering</option>
+            </select>
             </div>
-            <div class="graph-container">
-                <svg id="course-graph" ></svg>
+            <div id="selection_area">
+                <!--Selection Area will be rendered here-->
             </div>
-        </main>
-        <footer>
-            <p class="auth-info">Authors:<br>
-                Saul Ibaven - ibavenbueno.1@buckeyemail.osu.edu<br>
-                Chris Stanulet - stanulet.1@buckeyemail.osu.edu
-            </p>
-        </footer>
-    </div>
+            <div id="settings"><!--TODO--></div>
+        </div>
+        <div class="graph-container">
+            <svg id="course-graph" ></svg>
+        </div>
+    </main>
+    <footer>
+        <p class="auth-info">Authors:<br>
+            Saul Ibaven - ibavenbueno.1@buckeyemail.osu.edu<br>
+            Chris Stanulet - stanulet.1@buckeyemail.osu.edu
+        </p>
+    </footer>
     <script type="module">
-            import {renderChoices,returnSelectedChoices} from './js/SelectionArea.js';
-            import {returnBaseCourses} from './js/util.js';
+            //import {renderChoices,returnSelectedChoices} from './js/SelectionArea.js';
+            import {returnBaseCourses,interactionHandler} from './js/util.js';
 
             var selectedCourses = [];
             //Main app definition
             var app = async function () 
             {
-                // ~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~
-
-                function nodeExists(courseArray,courseNumber)
-                {
-                    var exists = false;
-                    courseArray.forEach( (course,i) => 
-                    {                        
-                        if(course.Number === courseNumber)
-                        {
-                            exists = true;
-                        }
-                    })
-                    return exists;
-                }
-
-                // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-                //Load Json files
-                var specializationData = await d3.json("data/CSE_Courses_Specialization.json");
-                var coreClasses = await d3.json("data/CSE_Courses_Core.json");
-                var selectionOptions = await d3.json("data/Choice_Options.json");
-                //console.log(specializaitonData);
-
-                renderChoices(selectionOptions, document.getElementById("selection_area"));
-
-                var checkboxes = document.querySelectorAll("input[type=checkbox]");
-                let selectedClasses = []
-                checkboxes.forEach(function(checkbox) {
-                checkbox.addEventListener('change', function() {
-                    console.log("Checkbox changed")
-                    selectedClasses = 
-                    Array.from(checkboxes)
-                    .filter(i => i.checked) 
-                    .map(i => i.value) 
-                    selectedCourses = returnSelectedChoices(coreClasses, specializationData,selectedClasses);
-                    console.log(selectedCourses);
-                    })
-                });
+                // --------------------------------------------------- CHECKBOX SELECTION --------------------------------------------------
+                //Add event listener to checkbox selection
+                // var checkboxes = document.querySelectorAll("input[type=checkbox]");
+                // let selectedClasses = []
+                // checkboxes.forEach(function(checkbox) 
+                // {
+                //     checkbox.addEventListener('change', interactionHandler)
+                //     // checkbox.addEventListener('change', function() 
+                //     // {
+                //     //     console.log("Checkbox changed")
+                //     //     selectedClasses = Array.from(checkboxes)
+                //     //         .filter(i => i.checked) 
+                //     //         .map(i => i.value) 
+                //     //     selectedCourses = returnSelectedChoices(coreClasses, specializationsData,selectedClasses);
+                //     //     console.log(selectedCourses);
+                //     // })
+                // });
 
                 //this is the set of courses where no choice is available
-                var noChoiceCoreCourses = returnBaseCourses(coreClasses, selectionOptions);
-                var noChoiceSpecializationCourses = returnBaseCourses(specializationData, selectionOptions);
+                //var noChoiceCoreCourses = returnBaseCourses(coreClasses, selectionOptions);
+                //var noChoiceSpecializationCourses = returnBaseCourses(specializationsData, selectionOptions);
                 
-
-                //Read the specialization selected 
+                // -------------------------------------------------- DROPDOWN -----------------------------------------------------------------
+                //Read the specialization selected from dropdown menu
                 var specializationDropdown = document.getElementById("specializations");
-                specializationDropdown.addEventListener('change', function handleChange(){
+                specializationDropdown.addEventListener('change', interactionHandler);
 
-                    //--------------- Draw graph everytime that selection is changed --------------------------
-                    //Read the new selection
-                    var selectedSpecialization = specializationDropdown.value
+                // specializationDropdown.addEventListener('change', function(){
 
-                    //Select the svg where the graph will be drawn
-                    const svgCourseGraph = d3.select("#course-graph");
-                    svgCourseGraph.select("g").remove();
+                // Setting the prereq nodes
+                // selectedSpecializationCourses.forEach(course => 
+                // {
+                //     //Get AND Prereqs
+                //     var andPrereqs = course.Prereq.split(";");
+                //     //console.log(andPrereqs);
 
-                    //If None is selected, clear all graphics
-                    if(selectedSpecialization != "None")
-                    {
-                        //Get only the values of the selected specialization
-                        const selectedSpecializationCourses = [];
-
-                        specializationsData.forEach(element => 
-                        {
-                            // Append only the required courses from the specialization
-                            if(element.Specialization == selectedSpecialization && element.Type == "REQUIRED")
-                            {
-                                //console.log(element.Number);
-                                selectedSpecializationCourses.push(element)
-                            }  
-                        });
-
-                        // ---------------------------------------------- DAG Creation --------------------------------------------------
-                        var g = new dagreD3.graphlib.Graph({directed:true})
-                                                    .setGraph({rankdir:"lr"})
-                                                    .setDefaultEdgeLabel(function() { return {}; });
+                //     andPrereqs.forEach(andPrereq => {
                         
-                        // Setting the specialization nodes
-                        selectedSpecializationCourses.forEach(course => 
-                        {
+                //         if(andPrereq.includes(",")) // There are OR Prereqs that need to be checked
+                //         {
 
-                            g.setNode(course.Number,{label : course.Number + ":" + course.Title, style: 'fill: green; text-align: center',id:course.Number});
+                //         }
+                //         else // There are no OR Preqrequisites, append nodes as they are and define edges
+                //         {
+                //             if(!g.hasNode(andPrereq)){
+                //                 g.setNode(andPrereq,{label : andPrereq, style: 'fill: blue',id:andPrereq});
+                //                 g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
+                //             }
+                //         }
 
-                        })
+                //     })
 
-                        // Setting the prereq nodes
-                        selectedSpecializationCourses.forEach(course => 
-                        {
-                            //Get AND Prereqs
-                            andPrereqs = course.Prereq.split(";");
-                            //console.log(andPrereqs);
-
-                            andPrereqs.forEach(andPrereq => {
-                                
-                                if(andPrereq.includes(",")) // There are OR Prereqs that need to be checked
-                                {
-                                    // orPrereqs = andPrereq.split(",");
-
-                                    // //Set Containment Node
-                                    // g.setNode(andPrereq ,{label : "OR", clusterLabelPos: 'top' ,style: 'fill: gray'}); 
-                                    // g.setEdge(andPrereq,course.Number);
-
-                                    // orPrereqs.forEach(orPrereq => {
-
-                                    //     //Add individual nodes, then add them to the containment                                        
-                                    //     g.setNode(orPrereq,{label : orPrereq, style: 'fill: blue;width:50px'});
-                                    //     //g.setParent(orPrereq,andPrereq);
-                                    //     g.setEdge(orPrereq,andPrereq);
-
-                                    // })
-
-                                    // //g.setEdge(andPrereq,course.Number);
-
-                                }
-                                else // There are no OR Preqrequisites, append nodes as they are and define edges
-                                {
-                                    if(!g.hasNode(andPrereq)){
-                                        g.setNode(andPrereq,{label : andPrereq, style: 'fill: blue',id:andPrereq});
-                                        g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
-                                    }
-                                }
-
-                            })
-
-                        })
-
-                        //Graphic adjustment of nodes
-                        g.nodes().forEach(function(v) 
-                        {
-                            var node = g.node(v);
-                            // Round the corners of the nodes
-                            node.rx = node.ry = 5;
-                        });
-
-                        // Create the renderer
-                        var render = new dagreD3.render();
-
-                        // Set up an SVG group so that we can translate the final graph.
-                        svgGroup = svgCourseGraph.append("g");
-
-                        // Run the renderer. This is what draws the final graph.
-                        render(svgCourseGraph.select("g"), g);
-
-                        // Center the graph
-                        var xCenterOffset = (window.innerWidth - g.graph().width) / 2;
-                        svgCourseGraph.select("g").attr("transform", "translate(" + xCenterOffset + ", 20)");
-                        svgCourseGraph.attr("height", g.graph().height + 40);
-                        // ---------------------------------------------------------------------------------------------------------------
-
-                        // ----------------------------------------- Mouse Interaction ---------------------------------------------------
-                        
-                        // Adding mouse click to tspan, since it is the biggest surface on the nodes
-                        d3.selectAll(".node").on("mouseenter",function()
-                        {
-                            nodeId = d3.select(this).property("id");
-                            allNodeEdges = g.nodeEdges(nodeId);
-
-                            allNodeEdges.forEach(edge => 
-                            {
-                                //console.log(edge.v);
-                                edgeId = "edge"+ edge.v + "-" + edge.w;
-                                //console.log(edgeId);
-                                d3.selectAll("#" + edgeId).selectAll("path").style("stroke","red");
-                                d3.selectAll("#" + edgeId).selectAll("defs").selectAll("marker").selectAll("path").style("fill","red");
-
-                            })
-                            
-                        })
-                        .on("mouseleave", function()
-                        {
-                            nodeId = d3.select(this).property("id");
-                            allNodeEdges = g.nodeEdges(nodeId);
-
-                            allNodeEdges.forEach(edge => 
-                            {
-                                //console.log(edge.v);
-                                edgeId = "edge"+ edge.v + "-" + edge.w;
-                                //console.log(edgeId);
-                                d3.selectAll("#" + edgeId).selectAll("path").style("stroke","black");
-                                d3.selectAll("#" + edgeId).selectAll("defs").selectAll("marker").selectAll("path").style("fill","black");
-
-                            })
-
-                        })
-
-
-
-                        //-----------------------------------------------------------------------------------------------------------------
-                    }
-                })
+                // })
                 
             }
             app();

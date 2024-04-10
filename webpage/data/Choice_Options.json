@@ -1,22 +1,7 @@
 [
 {
-    "Selection" : "ProjectClass",
-    "Number":1,
-    "Choices" : [
-        {
-            "id" : "3903"
-        },
-        {
-            "id" : "3902"
-        },
-        {
-            "id" : "3903"
-        }
-    ]
-},
-{
     "Selection": "AIT",
-    "Number":1,
+    "Number":2,
     "Choices": [
         {
             "id": "5523"
@@ -29,6 +14,12 @@
         },
         {
             "id": "5526"
+        },
+        {
+            "id": "5243"
+        },        
+        {
+            "id": "5914"
         }
     ]
 },
@@ -57,7 +48,7 @@
     ]
 },
 {
-    "Selection:":"DBA",
+    "Selection":"DBA",
     "Number":1,
     "Choices": [
         {
@@ -124,7 +115,7 @@
     "Number":1,
     "Choices": [
         {
-            "id": "3341"
+            "id": "3321"
         },
         {
             "id": "5234"
@@ -170,6 +161,21 @@
         },
         {
             "id": "3541"
+        }
+    ]
+},
+{
+    "Selection" : "ProjectClass",
+    "Number":1,
+    "Choices" : [
+        {
+            "id" : "3903"
+        },
+        {
+            "id" : "3902"
+        },
+        {
+            "id" : "3903"
         }
     ]
 },
