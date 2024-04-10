@@ -18,7 +18,8 @@
             <img class="site-logo" src="img\logo.png" alt="The Ohio State University College of Engineering">
         </header>
         <main>
-            <div class="user-menu-container"></div>
+            <div class="user-menu-container">
+                <div id = "specialization_selection">
                 <label class="dropdown-label" for="specializations">Select a specialization:</label>
                 <select class="dropdown-menu" name="specializations" id="specializations">
                     <option value="None"></option>
@@ -30,6 +31,12 @@
                     <option value="CSY">Computer Systems</option>
                     <option value="SWS">Software Engineering</option>
                 </select>
+                </div>
+                <div id="selection_area">
+                    <!--Selection Area will be rendered here-->
+                </div>
+                <div id="settings"><!--TODO--></div>
+            </div>
             <div class="graph-container">
                 <svg id="course-graph" ></svg>
             </div>
@@ -41,7 +48,11 @@
             </p>
         </footer>
     </div>
-    <script type="text/javascript">
+    <script type="module">
+            import {renderChoices,returnSelectedChoices} from './js/SelectionArea.js';
+            import {returnBaseCourses} from './js/util.js';
+
+            var selectedCourses = [];
             //Main app definition
             var app = async function () 
             {
@@ -63,8 +74,31 @@
                 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
                 //Load Json files
-                var specializationsData = await d3.json("data/CSE_Courses_Specialization.json");
+                var specializationData = await d3.json("data/CSE_Courses_Specialization.json");
+                var coreClasses = await d3.json("data/CSE_Courses_Core.json");
+                var selectionOptions = await d3.json("data/Choice_Options.json");
                 //console.log(specializaitonData);
+
+                renderChoices(selectionOptions, document.getElementById("selection_area"));
+
+                var checkboxes = document.querySelectorAll("input[type=checkbox]");
+                let selectedClasses = []
+                checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    console.log("Checkbox changed")
+                    selectedClasses = 
+                    Array.from(checkboxes)
+                    .filter(i => i.checked) 
+                    .map(i => i.value) 
+                    selectedCourses = returnSelectedChoices(coreClasses, specializationData,selectedClasses);
+                    console.log(selectedCourses);
+                    })
+                });
+
+                //this is the set of courses where no choice is available
+                var noChoiceCoreCourses = returnBaseCourses(coreClasses, selectionOptions);
+                var noChoiceSpecializationCourses = returnBaseCourses(specializationData, selectionOptions);
+                
 
                 //Read the specialization selected 
                 var specializationDropdown = document.getElementById("specializations");
@@ -215,6 +249,7 @@
                 
             }
             app();
+
     </script>
 </body>
 </html>
