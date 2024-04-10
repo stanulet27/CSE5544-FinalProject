@@ -61,11 +61,39 @@ main{
 .user-menu-container{
     position: relative;
     top: 0;
-    width: 100%;
+    width: 95%;
+    margin: 2.5%;
     height: auto;
+    display: flex;
+    border: 2px solid #000;
+    border-radius: 10px;
 }
 
+#selection_area{
+    flex: 1;
+    margin:5px;
+    overflow-y: auto;
+    max-height: 150px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+#specialization_selection{
+    flex:1;
+    margin:5px;
+    border-right: 2px solid #000;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
 .dropdown-label{
+
     position: relative;
     top: 0;
     left: 10px;
@@ -73,6 +101,7 @@ main{
 }
 
 .dropdown-menu{
+
     position: relative;
     top: 0;
     left: 10px;
@@ -101,5 +130,24 @@ main{
     font-size: 15;
     font-family: 'Courier New', Courier, monospace;
     fill: beige;
+}
+
+p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: black;
+}
+.choice{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: black;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+.choice label{
+    flex:1;
 }
 
