@@ -296,6 +296,21 @@ function updateGraph(coursesInformation)
                     g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number, curve: d3.curveBasis });
                 }
             }
+            else if(andPrereq.includes(",") && andPrereq != "NA")
+            {
+                var orPrereqs = andPrereq.split(",");
+                console.log(orPrereqs);
+
+                orPrereqs.forEach(orPrereq => 
+                {
+                    if(g.hasNode(orPrereq))
+                    {
+                        console.log(orPrereq + "-" + course.Number );
+                        g.setEdge(orPrereq,course.Number,{id : "edge" + orPrereq + "-" + course.Number, curve: d3.curveBasis, style: "stroke-dasharray: 5, 5; fill-opacity: 0" });
+                    }
+                })
+
+            }
         })
     })
 
