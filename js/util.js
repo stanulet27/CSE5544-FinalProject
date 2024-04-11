@@ -306,7 +306,7 @@ function updateGraph(coursesInformation)
     // Center the graph
     var initialScale = 1;
     var xCenterOffset = (window.innerWidth - g.graph().width) / 2;
-    svgCourseGraph.select("g").attr("transform", "translate(" + 0 + ", 20)");
+    svgCourseGraph.select("g").attr("transform", "translate(" + 3 + ", 20)");
     //svgCourseGraph.select("g").attr("transform", "translate(" + 0 + ", 20)");
     svgCourseGraph.attr("height", g.graph().height * initialScale + 40);
 
