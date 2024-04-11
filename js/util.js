@@ -26,16 +26,19 @@ function returnSelectedCourses(courseSet, selections)
 
 function containsValue(arr,v)
 {
+    var found = false;
+
     arr.forEach(arrV => 
     {
-        found = false;
-        if(arrV == v)
+        
+        if(arrV.Number == v)
         {
             found = true;
         }
 
-        return found;
     })
+
+    return found;
 }
 async function interactionHandler()
 {
@@ -223,7 +226,10 @@ async function interactionHandler()
         //Understand if we need to add or remove nodes
         coursesToAdd.forEach(course => 
         {
-            allCoursesToRender.push(course);
+            if(!containsValue(allCoursesToRender,course.Number))
+            {
+                allCoursesToRender.push(course);
+            }
         })
 
         //---------------------------------------------- DAG Creation --------------------------------------------------
@@ -260,6 +266,7 @@ function updateGraph(coursesInformation)
     // ---------------------------------------------------------------------- NODES --------------------------------------------------------------------------
     coursesInformation.forEach(course => 
     {
+        
         if(course.Type == "REQUIRED" || course.Type == "OPTION")
         {
             g.setNode(course.Number,{label : course.Number + ": " + course.Title, style: 'fill: green; text-align: center',id:course.Number});
@@ -284,7 +291,10 @@ function updateGraph(coursesInformation)
         {
             if(!andPrereq.includes(",") && andPrereq != "NA") // Exclude all OR prereqs
             {
-                g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number, curve: d3.curveBasis });
+                if(g.hasNode(andPrereq))
+                {
+                    g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number, curve: d3.curveBasis });
+                }
             }
         })
     })
