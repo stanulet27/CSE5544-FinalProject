@@ -284,7 +284,7 @@ function updateGraph(coursesInformation)
         {
             if(!andPrereq.includes(",") && andPrereq != "NA") // Exclude all OR prereqs
             {
-                g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number});
+                g.setEdge(andPrereq,course.Number,{id : "edge" + andPrereq + "-" + course.Number, curve: d3.curveBasis });
             }
         })
     })
@@ -306,11 +306,14 @@ function updateGraph(coursesInformation)
     // Center the graph
     var initialScale = 1;
     var xCenterOffset = (window.innerWidth - g.graph().width) / 2;
-    svgCourseGraph.select("g").attr("transform", "translate(" + xCenterOffset + ", 20)");
+    svgCourseGraph.select("g").attr("transform", "translate(" + 3 + ", 20)");
     //svgCourseGraph.select("g").attr("transform", "translate(" + 0 + ", 20)");
     svgCourseGraph.attr("height", g.graph().height * initialScale + 40);
-    
-    // ----------------------------------------- Mouse Interaction ---------------------------------------------------
+
+    // --------------------------------------------- ZOOM ------------------------------------------------------------
+    d3.select("#course-graph").attr("viewBox", "0 0 "+ g.graph().width + " " + g.graph().height);
+
+    // ----------------------------------------- MOUSE INTERACTION ---------------------------------------------------
     // Adding mouse click to tspan, since it is the biggest surface on the nodes
     d3.selectAll(".node").on("mouseenter",function()
     {
@@ -346,6 +349,8 @@ function updateGraph(coursesInformation)
     //-----------------------------------------------------------------------------------------------------------------
 
 }
+
+
 
 export {returnBaseCourses,returnSelectedCourses,interactionHandler};
 
