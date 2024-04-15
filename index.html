@@ -12,7 +12,8 @@
     <header>
         <svg class="site-title-container">
             <path class= "title-background" d="M 0 0 V 100 H 800 L 750 0 Z"/>
-            <text class="title-text" x="30" y="90">CSE Course Visualization</text>
+            <text class="title-text" x="30" y="70">CSE Course Visualization</text>
+            <text class="authors-text" x="40" y="90">By: S.Ibaven, C.Stanulet</text>
         </svg>
         <img class="site-logo" src="img\logo.png" alt="The Ohio State University College of Engineering">
     </header>
@@ -40,12 +41,6 @@
             <svg id="course-graph" ></svg>
         </div>
     </main>
-    <footer>
-        <p class="auth-info">Authors:<br>
-            Saul Ibaven - ibavenbueno.1@buckeyemail.osu.edu<br>
-            Chris Stanulet - stanulet.1@buckeyemail.osu.edu
-        </p>
-    </footer>
     <script type="module">
             //import {renderChoices,returnSelectedChoices} from './js/SelectionArea.js';
             import {returnBaseCourses,interactionHandler} from './js/util.js';
@@ -59,7 +54,6 @@
                 specializationDropdown.addEventListener('change', interactionHandler);                
             }
             app();
-
     </script>
 </body>
 </html>

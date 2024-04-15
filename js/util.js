@@ -269,11 +269,11 @@ function updateGraph(coursesInformation)
         
         if(course.Type == "REQUIRED" || course.Type == "OPTION")
         {
-            g.setNode(course.Number,{label : course.Number + ": " + course.Title, style: 'fill: green; text-align: center',id:course.Number});
+            g.setNode(course.Number,{label : course.Number + ": " + course.Title, style: 'fill: green; text-align: center',id:course.Number,labelStyle: "font-size: 1em"});
         }
         else
         {
-            g.setNode(course.Number,{label : course.Number + ": " + course.Title, style: 'fill: blue; text-align: center',id:course.Number});
+            g.setNode(course.Number,{label : course.Number + ": " + course.Title, style: 'fill: blue; text-align: center',id:course.Number,labelStyle: "font-size: 1em"});
         }
 
     });
@@ -299,13 +299,13 @@ function updateGraph(coursesInformation)
             else if(andPrereq.includes(",") && andPrereq != "NA")
             {
                 var orPrereqs = andPrereq.split(",");
-                console.log(orPrereqs);
+                //console.log(orPrereqs);
 
                 orPrereqs.forEach(orPrereq => 
                 {
                     if(g.hasNode(orPrereq))
                     {
-                        console.log(orPrereq + "-" + course.Number );
+                        //console.log(orPrereq + "-" + course.Number );
                         g.setEdge(orPrereq,course.Number,{id : "edge" + orPrereq + "-" + course.Number, curve: d3.curveBasis, style: "stroke-dasharray: 5, 5; fill-opacity: 0" });
                     }
                 })
@@ -328,15 +328,28 @@ function updateGraph(coursesInformation)
     // Run the renderer. This is what draws the final graph.
     render(svgCourseGraph.select("g"), g);
 
-    // Center the graph
-    var initialScale = 1;
-    var xCenterOffset = (window.innerWidth - g.graph().width) / 2;
-    svgCourseGraph.select("g").attr("transform", "translate(" + 3 + ", 20)");
-    //svgCourseGraph.select("g").attr("transform", "translate(" + 0 + ", 20)");
-    svgCourseGraph.attr("height", g.graph().height * initialScale + 40);
+    // Allign graph to the left and adjust containers to show complete graph
+    d3.select(".graph-container").attr("height", (g.graph().height + 200 ));
+    d3.select(".graph-container").attr("width", g.graph().width);
+    d3.select("#course-graph").select("g").attr("transform", "translate(" + 3 + ", 100)");
+    d3.select("#course-graph").attr("viewBox", "0 0 "+ (g.graph().width)  + " " + (g.graph().height + 200 ));
 
     // --------------------------------------------- ZOOM ------------------------------------------------------------
-    d3.select("#course-graph").attr("viewBox", "0 0 "+ g.graph().width + " " + g.graph().height);
+    var zoom = d3.zoom() 
+                    .scaleExtent([.5, 10]) 
+                    .on('zoom', function(d) 
+                    {
+                        svgCourseGraph.select("g")
+                        .attr('transform', d3.zoomTransform(this)); 
+                    }); 
+               
+    svgCourseGraph.call(zoom); 
+
+    svgCourseGraph.on("dblclick.zoom", function()
+    {
+        svgCourseGraph.select("g").call(zoom.transform, d3.zoomIdentity);
+        d3.select("#course-graph").select("g").attr("transform", "translate(" + 3 + ", 100)");
+    });
 
     // ----------------------------------------- MOUSE INTERACTION ---------------------------------------------------
     // Adding mouse click to tspan, since it is the biggest surface on the nodes
