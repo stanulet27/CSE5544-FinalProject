@@ -7,7 +7,7 @@ function renderChoices(selectedSpecialization,choiceOptions, htmlElement){
             htmlElement.innerHTML += `<p>${element.Selection}: (Please select ${element.Number})</p><div class="choice" id="${element.Selection}">`;
             element.Choices.forEach(choice => 
             {
-                document.getElementById(element.Selection).innerHTML += `<label class="option"><input type="checkbox" name="${element.Selection} id="${choice.id}" value="${choice.id}"/>${choice.id}</label>`;
+                document.getElementById(element.Selection).innerHTML += `<label class="option"><input type="checkbox" name="${choice.id}" id="${choice.id}" value="${choice.id}"/>${choice.id}</label>`;
             });
             htmlElement.innerHTML += `</div>`;
         }

@@ -47,9 +47,21 @@ async function interactionHandler()
     var selectionOptions = await d3.json("data/Choice_Options.json");
     var coreClassesData = await d3.json("data/CSE_Courses_Core_Updated.json");
 
+    var allOptionCourses = [];
+    selectionOptions.forEach(option => 
+    {   
+        if(option.Selection.length > 3){
+            option.Choices.forEach(courseNumber =>
+            {
+                allOptionCourses.push(courseNumber.id);
+            })
+        }
+    })
+
     //Get selectionOptions unique IDs array
     var selectionOptionsUniqueNumbers = [];
     selectionOptions.forEach(option => {
+
         option.Choices.forEach(courseNumber =>
         {
             if(!selectionOptionsUniqueNumbers.includes(courseNumber.id))
@@ -74,6 +86,7 @@ async function interactionHandler()
 
         if(selectedSpecialization != "None")
         {
+            
             //We render choices only when we selected a specialization 
             renderChoices(selectedSpecialization, selectionOptions, document.getElementById("selection_area"));
 
@@ -93,6 +106,14 @@ async function interactionHandler()
                 {
                     allCoursesToRender.push(element)
                 }  
+                if(element.Specialization == selectedSpecialization && allOptionCourses.includes(element.Number))
+                {
+                    allCoursesToRender.push(element)
+                    document.querySelectorAll("input[name=\"" + element.Number+"\"]").forEach(checkbox => 
+                    {
+                        checkbox.checked = true;
+                    })
+                }
             });
 
             //Now we iterate on the specialization courses to add details of their prereqs, we add them to the ALL COURSES ARRAY
