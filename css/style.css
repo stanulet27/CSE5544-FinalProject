@@ -1,0 +1,151 @@
+html,body
+{
+    height: 100%;
+    margin: 0;
+}
+
+/* ---------------------------------------------------------------------- HEADER ----------------------------------------------------------------------------------*/
+header{
+    height:100px;
+    background-color: firebrick;
+}
+
+.site-title-container{
+    float: left;
+    height: 100px;
+    width: 800px;
+}
+
+.title-background{
+    background-color: black;
+}
+
+.title-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 60px;
+    fill: white;
+}
+
+.site-logo{   
+    position: relative;
+    right: 15px;
+    top: 15px;
+    float: right;
+}
+
+/* ---------------------------------------------------------------------- MAIN ----------------------------------------------------------------------------------*/
+main{
+    position: static;
+    height: 100%;
+}
+
+
+.user-menu-container{
+    position: relative;
+    top: 0;
+    width: 95%;
+    margin: 2.5%;
+    height: auto;
+    display: flex;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+
+#selection_area{
+    flex: 1;
+    margin:5px;
+    overflow-y: auto;
+    max-height: 150px;
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-start;
+
+}
+#specialization_selection{
+    flex:1;
+    margin:5px;
+    border-right: 2px solid #000;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.dropdown-label{
+
+    position: relative;
+    top: 0;
+    left: 10px;
+    font-size:x-large;
+}
+
+.dropdown-menu{
+
+    position: relative;
+    top: 0;
+    left: 10px;
+    font-size:x-large;
+}
+
+.graph-container{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#course-graph{
+    position: relative;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+}
+
+.nodes{
+    fill: darkgreen;
+}
+
+.clusters rect {
+    fill: #00ffd0;
+    stroke: #999;
+    stroke-width: 1.5px;
+}
+
+text {
+    font-weight: 300;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+    font-size: 14px;
+    fill: whitesmoke;
+}
+
+.node rect {
+    stroke: #999;
+    fill: green;
+    stroke-width: 1.5px;
+}
+
+.edgePath path {
+    stroke: #333;
+    stroke-width: 1.5px;
+}
+
+p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: black;
+}
+.choice{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: black;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+.choice label{
+    flex:1;
+}
